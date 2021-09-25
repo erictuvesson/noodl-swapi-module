@@ -1,0 +1,517 @@
+{
+    "name": "SWAPI",
+    "components": [
+        {
+            "name": "/App",
+            "id": "943e3099-c191-ebb4-e366-f9b7e52d764a",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "2d50efab-897c-d8e5-f2de-00b98cf3547e",
+                        "fromProperty": "Results",
+                        "toId": "7c0aaccf-1a1b-3d30-0455-7c4fb8a09515",
+                        "toProperty": "items"
+                    },
+                    {
+                        "fromId": "255536ef-af4c-d3c4-24dd-6f86e106b34d",
+                        "fromProperty": "didMount",
+                        "toId": "2d50efab-897c-d8e5-f2de-00b98cf3547e",
+                        "toProperty": "Fetch"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "255536ef-af4c-d3c4-24dd-6f86e106b34d",
+                        "type": "Group",
+                        "x": 302,
+                        "y": -39,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "2beb05b0-d567-dba9-ad26-9f68f4424fb5",
+                                "type": "Group",
+                                "parameters": {
+                                    "scrollEnabled": true
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "7c0aaccf-1a1b-3d30-0455-7c4fb8a09515",
+                                        "type": "For Each",
+                                        "parameters": {
+                                            "template": "/Film"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [
+                                            {
+                                                "name": "itemOutputSignal-Open Movie",
+                                                "displayName": "Open Movie",
+                                                "type": "signal",
+                                                "plug": "output",
+                                                "group": "Item Signals",
+                                                "index": 5
+                                            },
+                                            {
+                                                "name": "inputMappingScript",
+                                                "type": {
+                                                    "name": "string",
+                                                    "codeeditor": "javascript"
+                                                },
+                                                "displayName": "Script",
+                                                "group": "Input Mapping",
+                                                "default": "// Here you add mappings between the properties of the item objects and the inputs of the components.\n// 'myComponentInput': 'myObjectProperty',\n// 'anotherComponentInput': function () { return object.get('someProperty') + ' ' + object.get('otherProp') }\n// These are the default mappings based on the selected template component.\nmap({\n\t'title': 'title',\n\t'release_date': 'release_date',\n\t'opening_crawl': 'opening_crawl',\n\t'director': 'director',\n\t'producer': 'producer',\n})\n",
+                                                "plug": "input",
+                                                "index": 6
+                                            }
+                                        ],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2d50efab-897c-d8e5-f2de-00b98cf3547e",
+                        "type": "Get all films",
+                        "x": -21.836519402698343,
+                        "y": 21.851453714118918,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    }
+                ]
+            },
+            "metadata": {
+                "canvasPos": {
+                    "x": -260,
+                    "y": -20.926582460319505
+                }
+            }
+        },
+        {
+            "name": "/Film",
+            "id": "67ee7854-7df0-3681-1161-0cb45a2fe8a1",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "48706366-8f1a-4851-0f13-b8df71a8e5f1",
+                        "fromProperty": "title",
+                        "toId": "8c279e51-2dab-f4b0-3c58-410c08c573d1",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "48706366-8f1a-4851-0f13-b8df71a8e5f1",
+                        "fromProperty": "opening_crawl",
+                        "toId": "8c646862-b3fb-59bd-5cd5-be1e233c50c1",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "e4e709f3-94a6-6bcd-e058-dd825a8aba7c",
+                        "fromProperty": "onClick",
+                        "toId": "e403f813-6863-4fcc-624e-1b30f60098fd",
+                        "toProperty": "Open Movie"
+                    },
+                    {
+                        "fromId": "e436fdf6-336b-3c27-c2e0-8d3719c8c805",
+                        "fromProperty": "formatted",
+                        "toId": "06d09ec4-bb4f-5a6b-3c98-0f9f6a75a94c",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "48706366-8f1a-4851-0f13-b8df71a8e5f1",
+                        "fromProperty": "release_date",
+                        "toId": "e436fdf6-336b-3c27-c2e0-8d3719c8c805",
+                        "toProperty": "release_date"
+                    },
+                    {
+                        "fromId": "d2a51172-d2ee-dc37-7cf3-e240bfc7a439",
+                        "fromProperty": "formatted",
+                        "toId": "f68aff26-f127-7818-02c6-39accbdebf92",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "48706366-8f1a-4851-0f13-b8df71a8e5f1",
+                        "fromProperty": "director",
+                        "toId": "d2a51172-d2ee-dc37-7cf3-e240bfc7a439",
+                        "toProperty": "director"
+                    },
+                    {
+                        "fromId": "42741222-596e-78ee-23bc-41af1ed6f8c8",
+                        "fromProperty": "formatted",
+                        "toId": "071c2991-0d8e-5159-044b-f6f7d54b17ee",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "48706366-8f1a-4851-0f13-b8df71a8e5f1",
+                        "fromProperty": "producer",
+                        "toId": "42741222-596e-78ee-23bc-41af1ed6f8c8",
+                        "toProperty": "producer"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "48706366-8f1a-4851-0f13-b8df71a8e5f1",
+                        "type": "Component Inputs",
+                        "x": -562.8909254208467,
+                        "y": 347.0225846874755,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "title",
+                                "plug": "output",
+                                "type": "*",
+                                "index": 0
+                            },
+                            {
+                                "name": "director",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 2
+                            },
+                            {
+                                "name": "opening_crawl",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 5
+                            },
+                            {
+                                "name": "producer",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 3
+                            },
+                            {
+                                "name": "release_date",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 1
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "e403f813-6863-4fcc-624e-1b30f60098fd",
+                        "type": "Component Outputs",
+                        "x": 702,
+                        "y": 25,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "Open Movie",
+                                "plug": "input",
+                                "type": "*",
+                                "index": 0
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "5300d440-e7b6-ee96-5ffd-40b8df26a154",
+                        "type": "Group",
+                        "x": 254,
+                        "y": 8,
+                        "parameters": {
+                            "paddingLeft": {
+                                "value": 20,
+                                "unit": "px"
+                            },
+                            "paddingBottom": {
+                                "value": 10,
+                                "unit": "px"
+                            },
+                            "paddingRight": {
+                                "value": 20,
+                                "unit": "px"
+                            },
+                            "paddingTop": {
+                                "value": 10,
+                                "unit": "px"
+                            }
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "bbcb17d8-90d6-6a95-d5af-ece25ef4d8f6",
+                                "type": "Group",
+                                "parameters": {
+                                    "backgroundColor": "#FFFFFF",
+                                    "borderStyle": "solid",
+                                    "borderWidth": {
+                                        "value": 1,
+                                        "unit": "px"
+                                    },
+                                    "borderRadius": {
+                                        "value": 8,
+                                        "unit": "px"
+                                    },
+                                    "borderColor": "#E6E6E6",
+                                    "boxShadowEnabled": true,
+                                    "boxShadowSpreadRadius": {
+                                        "value": 0,
+                                        "unit": "px"
+                                    },
+                                    "boxShadowBlurRadius": {
+                                        "value": 5,
+                                        "unit": "px"
+                                    }
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "e4e709f3-94a6-6bcd-e058-dd825a8aba7c",
+                                        "type": "Group",
+                                        "parameters": {
+                                            "paddingTop": {
+                                                "value": 10,
+                                                "unit": "px"
+                                            },
+                                            "paddingRight": {
+                                                "value": 10,
+                                                "unit": "px"
+                                            },
+                                            "paddingLeft": {
+                                                "value": 10,
+                                                "unit": "px"
+                                            }
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": [
+                                            {
+                                                "id": "8c279e51-2dab-f4b0-3c58-410c08c573d1",
+                                                "type": "Text",
+                                                "label": "Title",
+                                                "parameters": {
+                                                    "marginLeft": {
+                                                        "value": 0,
+                                                        "unit": "px"
+                                                    },
+                                                    "marginBottom": {
+                                                        "value": 0,
+                                                        "unit": "px"
+                                                    },
+                                                    "marginRight": {
+                                                        "value": 0,
+                                                        "unit": "px"
+                                                    },
+                                                    "marginTop": {
+                                                        "value": 0,
+                                                        "unit": "px"
+                                                    },
+                                                    "text": "{title}",
+                                                    "fontFamily": "Tahoma",
+                                                    "fontSize": {
+                                                        "value": 24,
+                                                        "unit": "px"
+                                                    }
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            },
+                                            {
+                                                "id": "06d09ec4-bb4f-5a6b-3c98-0f9f6a75a94c",
+                                                "type": "Text",
+                                                "label": "Release date",
+                                                "parameters": {
+                                                    "fontFamily": "Lucida Console",
+                                                    "fontSize": {
+                                                        "value": 12,
+                                                        "unit": "px"
+                                                    },
+                                                    "marginTop": {
+                                                        "value": 10,
+                                                        "unit": "px"
+                                                    },
+                                                    "marginBottom": {
+                                                        "value": 10,
+                                                        "unit": "px"
+                                                    },
+                                                    "textTransform": "lowercase"
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "3230aba7-42c1-da78-a49e-2fb1a9b27453",
+                                        "type": "Group",
+                                        "parameters": {
+                                            "paddingLeft": {
+                                                "value": 10,
+                                                "unit": "px"
+                                            },
+                                            "paddingRight": {
+                                                "value": 10,
+                                                "unit": "px"
+                                            },
+                                            "sizeMode": "explicit",
+                                            "paddingTop": {
+                                                "value": 10,
+                                                "unit": "px"
+                                            }
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": [
+                                            {
+                                                "id": "f68aff26-f127-7818-02c6-39accbdebf92",
+                                                "type": "Text",
+                                                "label": "Director",
+                                                "parameters": {},
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            },
+                                            {
+                                                "id": "071c2991-0d8e-5159-044b-f6f7d54b17ee",
+                                                "type": "Text",
+                                                "label": "Producer",
+                                                "parameters": {},
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "a125a402-b204-2a3b-c092-3edc4158d5b2",
+                                        "type": "Group",
+                                        "parameters": {
+                                            "paddingLeft": {
+                                                "value": 10,
+                                                "unit": "px"
+                                            },
+                                            "paddingRight": {
+                                                "value": 10,
+                                                "unit": "px"
+                                            },
+                                            "paddingTop": {
+                                                "value": 10,
+                                                "unit": "px"
+                                            }
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": [
+                                            {
+                                                "id": "8c646862-b3fb-59bd-5cd5-be1e233c50c1",
+                                                "type": "Text",
+                                                "label": "Description",
+                                                "parameters": {
+                                                    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean orci tortor, placerat sit amet porta a, hendrerit at leo. Pellentesque pretium ornare sem, ut faucibus ipsum auctor sit amet. Etiam eget luctus augue, vitae ornare magna. Fusce non quam augue. Vivamus sed tincidunt mauris, id finibus turpis. Cras vel elit feugiat sapien ornare vehicula. Suspendisse purus ante, sodales et aliquam sit amet, posuere non tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue neque in varius scelerisque. Donec dictum, justo non laoreet commodo, eros lectus condimentum tellus, ut iaculis nisi libero eu eros. Praesent posuere urna ut elementum laoreet. Cras non facilisis massa. Quisque arcu ex, efficitur in neque et, dictum porta nibh. Nulla ornare venenatis dictum. Aenean lectus tellus, auctor sed quam vestibulum, volutpat pulvinar sem.\n\nUt fermentum elementum luctus. Ut nec ex pretium, facilisis libero nec, feugiat nibh. Nunc eget congue sapien. Nullam sollicitudin quis erat a rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed ultrices non augue nec fringilla. Aliquam vitae malesuada ligula, sed hendrerit sem. Pellentesque a tempor erat. Vivamus semper a enim in viverra. Proin ut dignissim mi, vel mattis arcu. Praesent porta auctor leo, at sagittis ante tincidunt vitae. Duis id ligula tempus, pretium nisi ac, elementum risus.",
+                                                    "maxHeight": {
+                                                        "value": 150,
+                                                        "unit": "px"
+                                                    },
+                                                    "style": "/* example:\n{\n\tbackgroundColor: 'red'\n}\n*/\n\n{\n    overflow: 'hidden'\n}\n"
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "e436fdf6-336b-3c27-c2e0-8d3719c8c805",
+                        "type": "String Format",
+                        "label": "String Format",
+                        "x": 92.4710531934877,
+                        "y": 287.54583064751705,
+                        "parameters": {
+                            "format": "Released {release_date}"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "release_date",
+                                "type": "string",
+                                "plug": "input",
+                                "index": 2
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "d2a51172-d2ee-dc37-7cf3-e240bfc7a439",
+                        "type": "String Format",
+                        "label": "String Format",
+                        "x": 88.86263988690052,
+                        "y": 398.20383871620055,
+                        "parameters": {
+                            "format": "Director: {director}"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "director",
+                                "type": "string",
+                                "plug": "input",
+                                "index": 2
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "42741222-596e-78ee-23bc-41af1ed6f8c8",
+                        "type": "String Format",
+                        "label": "String Format",
+                        "x": 87.65983545137124,
+                        "y": 488.41417138088826,
+                        "parameters": {
+                            "format": "Producers: {producer}"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "producer",
+                                "type": "string",
+                                "plug": "input",
+                                "index": 2
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            },
+            "metadata": {
+                "canvasPos": {
+                    "x": 224.37394618136005,
+                    "y": -14.440495591521154
+                },
+                "canvasSize": {
+                    "width": "541px",
+                    "height": "346px"
+                }
+            }
+        }
+    ],
+    "settings": {},
+    "rootNodeId": "255536ef-af4c-d3c4-24dd-6f86e106b34d",
+    "version": "1",
+    "metadata": {
+        "dbCollections": []
+    }
+}

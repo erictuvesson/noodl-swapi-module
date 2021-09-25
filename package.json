@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "@types/node": "^16.9.6",
+    "noodl-types": "^1.0.197"
+  }
+}
