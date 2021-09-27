@@ -238,17 +238,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "makeRequest": () => (/* binding */ makeRequest),
 /* harmony export */   "capitalize": () => (/* binding */ capitalize)
 /* harmony export */ });
-function makeRequest(method, url, body = undefined) {
+function makeRequest(method, url, queryParameters = undefined, body = undefined) {
     return new Promise(function (resolve, reject) {
         var xhr = new XMLHttpRequest();
-        xhr.open(method, url);
+        let finalUrl = url;
+        if (queryParameters) {
+            const urlParams = new URLSearchParams(queryParameters).toString();
+            if (urlParams.length > 0) {
+                finalUrl += "?" + urlParams;
+            }
+        }
+        xhr.open(method, finalUrl);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.setRequestHeader('Accept', 'application/json');
         xhr.onload = function () {
             if (this.status >= 200 && this.status < 300) {
                 resolve({
                     content: xhr.responseText,
-                    json: JSON.parse(xhr.responseText),
+                    json: updateResponse(JSON.parse(xhr.responseText)),
                     xhr
                 });
             }
@@ -270,6 +277,58 @@ function makeRequest(method, url, body = undefined) {
 }
 function capitalize(value) {
     return value.charAt(0).toUpperCase() + value.slice(1);
+}
+function extractNumber(value) {
+    return Number(value.match(/\d+/g).join(''));
+}
+/**
+ * This is a very very bad function,
+ * but since everything is generated this was
+ * a quick solution to get it working.
+ *
+ * @param json
+ */
+function updateResponse(json) {
+    json = updatePartialResponse(json);
+    if (json.results) {
+        // @ts-ignore
+        json.results = json.results.map(x => updatePartialResponse(x));
+    }
+    return json;
+}
+function updatePartialResponse(value) {
+    if (value.url) {
+        value.id = extractNumber(value.url);
+    }
+    // homeworld
+    if (Array.isArray(value.characters) && value.characters.length > 0) {
+        value.characters = value.characters.map(extractNumber);
+    }
+    if (Array.isArray(value.planets) && value.planets.length > 0) {
+        value.planets = value.planets.map(extractNumber);
+    }
+    if (Array.isArray(value.species) && value.species.length > 0) {
+        value.species = value.species.map(extractNumber);
+    }
+    if (Array.isArray(value.vehicles) && value.vehicles.length > 0) {
+        value.vehicles = value.vehicles.map(extractNumber);
+    }
+    if (Array.isArray(value.starships) && value.starships.length > 0) {
+        value.starships = value.starships.map(extractNumber);
+    }
+    if (Array.isArray(value.people) && value.people.length > 0) {
+        value.people = value.people.map(extractNumber);
+    }
+    if (Array.isArray(value.residents) && value.residents.length > 0) {
+        value.residents = value.residents.map(extractNumber);
+    }
+    if (Array.isArray(value.pilots) && value.pilots.length > 0) {
+        value.pilots = value.pilots.map(extractNumber);
+    }
+    if (Array.isArray(value.films) && value.films.length > 0) {
+        value.films = value.films.map(extractNumber);
+    }
+    return value;
 }
 
 
@@ -358,7 +417,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const defaultCategory = 'Star Wars API';
 const debugLog = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.defineNode({
     category: 'Debug',
     name: 'Log',
@@ -377,47 +435,83 @@ const debugLog = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.defineNode({
     }
 });
 const getFilms = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.defineNode({
-    category: defaultCategory,
+    category: 'Star Wars API',
     name: 'Get all films',
     color: 'green',
+    initialize: function () {
+        this.result = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.Object.create(null);
+    },
     inputs: {
-        Query: {
+        Search: {
             group: 'Query',
             type: 'string'
         },
     },
     outputs: {
+        /**
+         *
+         **/
         Fetched: {
             group: 'Events',
             type: 'signal'
         },
+        /**
+         *
+         **/
         Error: {
             group: 'Events',
             type: 'signal'
         },
+        /**
+         *
+         *
+         * name: count
+         * type: integer
+         **/
         Count: {
             group: 'Response',
-            type: 'string'
+            type: 'number'
         },
+        /**
+         *
+         *
+         * name: next
+         * type: integer
+         **/
         Next: {
             group: 'Response',
             type: 'number'
         },
+        /**
+         *
+         *
+         * name: previous
+         * type: integer
+         **/
         Previous: {
             group: 'Response',
             type: 'number'
         },
+        /**
+         *
+         *
+         * name: results
+         * type: array
+         **/
         Results: {
             group: 'Response',
             type: 'array'
-        }
+        },
     },
     signals: {
         Fetch: function () {
             let path = '/api/films';
             let body = null;
             let queryParameters = {};
-            (0,_helper__WEBPACK_IMPORTED_MODULE_0__.makeRequest)('GET', _config__WEBPACK_IMPORTED_MODULE_1__.domain + path, body)
+            if (this.inputs['Search']) {
+                queryParameters['search'] = this.inputs['Search'];
+            }
+            (0,_helper__WEBPACK_IMPORTED_MODULE_0__.makeRequest)('GET', _config__WEBPACK_IMPORTED_MODULE_1__.domain + path, queryParameters, body)
                 .then(({ json }) => {
                 for (const key of Object.keys(json)) {
                     // Capitalize to make it more user friendly
@@ -451,14 +545,682 @@ const getFilms = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.defineNode({
                 this.sendSignalOnOutput('Error');
             });
         }
+    },
+    methods: {
+        getResult() {
+            return this.result;
+        }
+    }
+});
+const getFilm = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.defineNode({
+    category: 'Star Wars API',
+    name: 'Get film by id',
+    color: 'green',
+    initialize: function () {
+        this.result = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.Object.create(null);
+    },
+    inputs: {
+        Id: {
+            group: 'Query',
+            type: 'string'
+        },
+    },
+    outputs: {
+        /**
+         *
+         **/
+        Fetched: {
+            group: 'Events',
+            type: 'signal'
+        },
+        /**
+         *
+         **/
+        Error: {
+            group: 'Events',
+            type: 'signal'
+        },
+        /**
+         * The title of this film
+         *
+         * name: title
+         * type: string
+         **/
+        Title: {
+            group: 'Response',
+            type: 'string'
+        },
+        /**
+         * The episode number of this film.
+         *
+         * name: episode_id
+         * type: integer
+         **/
+        Episode_id: {
+            group: 'Response',
+            type: 'number'
+        },
+        /**
+         * The opening paragraphs at the beginning of this film.
+         *
+         * name: opening_crawl
+         * type: string
+         **/
+        Opening_crawl: {
+            group: 'Response',
+            type: 'string'
+        },
+        /**
+         * The name of the director of this film.
+         *
+         * name: director
+         * type: string
+         **/
+        Director: {
+            group: 'Response',
+            type: 'string'
+        },
+        /**
+         * The name(s) of the producer(s) of this film. Comma separated.
+         *
+         * name: producer
+         * type: string
+         **/
+        Producer: {
+            group: 'Response',
+            type: 'string'
+        },
+        /**
+         * The ISO 8601 date format of film release at original creator country.
+         *
+         * name: release_date
+         * type: string
+         **/
+        Release_date: {
+            group: 'Response',
+            type: 'string'
+        },
+        /**
+         * An array of species resource URLs that are in this film.
+         *
+         * name: species
+         * type: array
+         **/
+        Species: {
+            group: 'Response',
+            type: 'array'
+        },
+        /**
+         * An array of starship resource URLs that are in this film.
+         *
+         * name: starships
+         * type: array
+         **/
+        Starships: {
+            group: 'Response',
+            type: 'array'
+        },
+        /**
+         * An array of vehicle resource URLs that are in this film.
+         *
+         * name: vehicles
+         * type: array
+         **/
+        Vehicles: {
+            group: 'Response',
+            type: 'array'
+        },
+        /**
+         * An array of people resource URLs that are in this film.
+         *
+         * name: characters
+         * type: array
+         **/
+        Characters: {
+            group: 'Response',
+            type: 'array'
+        },
+        /**
+         * An array of planet resource URLs that are in this film.
+         *
+         * name: planets
+         * type: array
+         **/
+        Planets: {
+            group: 'Response',
+            type: 'array'
+        },
+        /**
+         * the hypermedia URL of this resource.
+         *
+         * name: url
+         * type: string
+         **/
+        Url: {
+            group: 'Response',
+            type: 'string'
+        },
+        /**
+         * Extracted from url.
+         *
+         * name: id
+         * type: number
+         **/
+        Id: {
+            group: 'Response',
+            type: 'number'
+        },
+        /**
+         * the ISO 8601 date format of the time that this resource was created.
+         *
+         * name: created
+         * type: string
+         **/
+        Created: {
+            group: 'Response',
+            type: 'string'
+        },
+        /**
+         * the ISO 8601 date format of the time that this resource was edited.
+         *
+         * name: edited
+         * type: string
+         **/
+        Edited: {
+            group: 'Response',
+            type: 'string'
+        },
+    },
+    signals: {
+        Fetch: function () {
+            let path = '/api/films/{id}';
+            let body = null;
+            let queryParameters = {};
+            path = path.replace('{id}', `${encodeURIComponent(this.inputs['Id']).toString()}`);
+            (0,_helper__WEBPACK_IMPORTED_MODULE_0__.makeRequest)('GET', _config__WEBPACK_IMPORTED_MODULE_1__.domain + path, queryParameters, body)
+                .then(({ json }) => {
+                for (const key of Object.keys(json)) {
+                    // Capitalize to make it more user friendly
+                    const newKey = (0,_helper__WEBPACK_IMPORTED_MODULE_0__.capitalize)(key);
+                    // Check if we have something that is not registered
+                    // then send a warning
+                    if (!this.hasOutput(newKey)) {
+                        this.sendWarning('swapi-warning', `Output pin is missing '${newKey}'`);
+                    }
+                    // Update the output pin
+                    // @ts-ignore - bad solution, but nothing we should worry about
+                    const newOutput = json[key];
+                    if (Array.isArray(newOutput)) {
+                        this.outputs[newKey] = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.Array.create(newOutput);
+                    }
+                    else if (typeof newOutput === 'object') {
+                        this.outputs[newKey] = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.Object.create(newOutput);
+                    }
+                    else {
+                        this.outputs[newKey] = newOutput;
+                    }
+                    // Flag that the output have been changed
+                    this.flagOutputDirty(newKey);
+                }
+                // Send the signal that we just recieved a response
+                this.sendSignalOnOutput('Fetched');
+            })
+                .catch(({ status, statusText }) => {
+                // Send a warning and a signal that we got a http error
+                this.sendWarning('swapi-error', `Http Error (${status}): ${statusText}`);
+                this.sendSignalOnOutput('Error');
+            });
+        }
+    },
+    methods: {
+        getResult() {
+            return this.result;
+        }
+    }
+});
+const getPeople = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.defineNode({
+    category: 'Star Wars API',
+    name: 'Get all people',
+    color: 'green',
+    initialize: function () {
+        this.result = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.Object.create(null);
+    },
+    inputs: {},
+    outputs: {
+        /**
+         *
+         **/
+        Fetched: {
+            group: 'Events',
+            type: 'signal'
+        },
+        /**
+         *
+         **/
+        Error: {
+            group: 'Events',
+            type: 'signal'
+        },
+        /**
+         *
+         *
+         * name: count
+         * type: integer
+         **/
+        Count: {
+            group: 'Response',
+            type: 'number'
+        },
+        /**
+         *
+         *
+         * name: next
+         * type: integer
+         **/
+        Next: {
+            group: 'Response',
+            type: 'number'
+        },
+        /**
+         *
+         *
+         * name: previous
+         * type: integer
+         **/
+        Previous: {
+            group: 'Response',
+            type: 'number'
+        },
+        /**
+         *
+         *
+         * name: results
+         * type: array
+         **/
+        Results: {
+            group: 'Response',
+            type: 'array'
+        },
+    },
+    signals: {
+        Fetch: function () {
+            let path = '/api/people';
+            let body = null;
+            let queryParameters = {};
+            (0,_helper__WEBPACK_IMPORTED_MODULE_0__.makeRequest)('GET', _config__WEBPACK_IMPORTED_MODULE_1__.domain + path, queryParameters, body)
+                .then(({ json }) => {
+                for (const key of Object.keys(json)) {
+                    // Capitalize to make it more user friendly
+                    const newKey = (0,_helper__WEBPACK_IMPORTED_MODULE_0__.capitalize)(key);
+                    // Check if we have something that is not registered
+                    // then send a warning
+                    if (!this.hasOutput(newKey)) {
+                        this.sendWarning('swapi-warning', `Output pin is missing '${newKey}'`);
+                    }
+                    // Update the output pin
+                    // @ts-ignore - bad solution, but nothing we should worry about
+                    const newOutput = json[key];
+                    if (Array.isArray(newOutput)) {
+                        this.outputs[newKey] = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.Array.create(newOutput);
+                    }
+                    else if (typeof newOutput === 'object') {
+                        this.outputs[newKey] = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.Object.create(newOutput);
+                    }
+                    else {
+                        this.outputs[newKey] = newOutput;
+                    }
+                    // Flag that the output have been changed
+                    this.flagOutputDirty(newKey);
+                }
+                // Send the signal that we just recieved a response
+                this.sendSignalOnOutput('Fetched');
+            })
+                .catch(({ status, statusText }) => {
+                // Send a warning and a signal that we got a http error
+                this.sendWarning('swapi-error', `Http Error (${status}): ${statusText}`);
+                this.sendSignalOnOutput('Error');
+            });
+        }
+    },
+    methods: {
+        getResult() {
+            return this.result;
+        }
+    }
+});
+const getPerson = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.defineNode({
+    category: 'Star Wars API',
+    name: 'Get person by id',
+    color: 'green',
+    initialize: function () {
+        this.result = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.Object.create(null);
+    },
+    inputs: {
+        Id: {
+            group: 'Query',
+            type: 'string'
+        },
+    },
+    outputs: {
+        /**
+         *
+         **/
+        Fetched: {
+            group: 'Events',
+            type: 'signal'
+        },
+        /**
+         *
+         **/
+        Error: {
+            group: 'Events',
+            type: 'signal'
+        },
+        /**
+         * Unique identifier representing a specific person for a given character persona.
+         *
+         * name: id
+         * type: number
+         **/
+        Id: {
+            group: 'Response',
+            type: 'number'
+        },
+        /**
+         * Display name of person.
+         *
+         * name: name
+         * type: string
+         **/
+        Name: {
+            group: 'Response',
+            type: 'string'
+        },
+        /**
+         * Indetifier of the planet the person is from.
+         *
+         * name: homeWorldId
+         * type: integer
+         **/
+        HomeWorldId: {
+            group: 'Response',
+            type: 'number'
+        },
+        /**
+         * Which side or team the person has an allegiance.
+         *
+         * name: allegiance
+         * type: string
+         **/
+        Allegiance: {
+            group: 'Response',
+            type: 'string'
+        },
+    },
+    signals: {
+        Fetch: function () {
+            let path = '/api/people/{id}';
+            let body = null;
+            let queryParameters = {};
+            path = path.replace('{id}', `${encodeURIComponent(this.inputs['Id']).toString()}`);
+            (0,_helper__WEBPACK_IMPORTED_MODULE_0__.makeRequest)('GET', _config__WEBPACK_IMPORTED_MODULE_1__.domain + path, queryParameters, body)
+                .then(({ json }) => {
+                for (const key of Object.keys(json)) {
+                    // Capitalize to make it more user friendly
+                    const newKey = (0,_helper__WEBPACK_IMPORTED_MODULE_0__.capitalize)(key);
+                    // Check if we have something that is not registered
+                    // then send a warning
+                    if (!this.hasOutput(newKey)) {
+                        this.sendWarning('swapi-warning', `Output pin is missing '${newKey}'`);
+                    }
+                    // Update the output pin
+                    // @ts-ignore - bad solution, but nothing we should worry about
+                    const newOutput = json[key];
+                    if (Array.isArray(newOutput)) {
+                        this.outputs[newKey] = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.Array.create(newOutput);
+                    }
+                    else if (typeof newOutput === 'object') {
+                        this.outputs[newKey] = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.Object.create(newOutput);
+                    }
+                    else {
+                        this.outputs[newKey] = newOutput;
+                    }
+                    // Flag that the output have been changed
+                    this.flagOutputDirty(newKey);
+                }
+                // Send the signal that we just recieved a response
+                this.sendSignalOnOutput('Fetched');
+            })
+                .catch(({ status, statusText }) => {
+                // Send a warning and a signal that we got a http error
+                this.sendWarning('swapi-error', `Http Error (${status}): ${statusText}`);
+                this.sendSignalOnOutput('Error');
+            });
+        }
+    },
+    methods: {
+        getResult() {
+            return this.result;
+        }
+    }
+});
+const getPlanets = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.defineNode({
+    category: 'Star Wars API',
+    name: 'Get all planets',
+    color: 'green',
+    initialize: function () {
+        this.result = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.Object.create(null);
+    },
+    inputs: {},
+    outputs: {
+        /**
+         *
+         **/
+        Fetched: {
+            group: 'Events',
+            type: 'signal'
+        },
+        /**
+         *
+         **/
+        Error: {
+            group: 'Events',
+            type: 'signal'
+        },
+        /**
+         *
+         *
+         * name: count
+         * type: integer
+         **/
+        Count: {
+            group: 'Response',
+            type: 'number'
+        },
+        /**
+         *
+         *
+         * name: next
+         * type: integer
+         **/
+        Next: {
+            group: 'Response',
+            type: 'number'
+        },
+        /**
+         *
+         *
+         * name: previous
+         * type: integer
+         **/
+        Previous: {
+            group: 'Response',
+            type: 'number'
+        },
+        /**
+         *
+         *
+         * name: results
+         * type: array
+         **/
+        Results: {
+            group: 'Response',
+            type: 'array'
+        },
+    },
+    signals: {
+        Fetch: function () {
+            let path = '/api/planets';
+            let body = null;
+            let queryParameters = {};
+            (0,_helper__WEBPACK_IMPORTED_MODULE_0__.makeRequest)('GET', _config__WEBPACK_IMPORTED_MODULE_1__.domain + path, queryParameters, body)
+                .then(({ json }) => {
+                for (const key of Object.keys(json)) {
+                    // Capitalize to make it more user friendly
+                    const newKey = (0,_helper__WEBPACK_IMPORTED_MODULE_0__.capitalize)(key);
+                    // Check if we have something that is not registered
+                    // then send a warning
+                    if (!this.hasOutput(newKey)) {
+                        this.sendWarning('swapi-warning', `Output pin is missing '${newKey}'`);
+                    }
+                    // Update the output pin
+                    // @ts-ignore - bad solution, but nothing we should worry about
+                    const newOutput = json[key];
+                    if (Array.isArray(newOutput)) {
+                        this.outputs[newKey] = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.Array.create(newOutput);
+                    }
+                    else if (typeof newOutput === 'object') {
+                        this.outputs[newKey] = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.Object.create(newOutput);
+                    }
+                    else {
+                        this.outputs[newKey] = newOutput;
+                    }
+                    // Flag that the output have been changed
+                    this.flagOutputDirty(newKey);
+                }
+                // Send the signal that we just recieved a response
+                this.sendSignalOnOutput('Fetched');
+            })
+                .catch(({ status, statusText }) => {
+                // Send a warning and a signal that we got a http error
+                this.sendWarning('swapi-error', `Http Error (${status}): ${statusText}`);
+                this.sendSignalOnOutput('Error');
+            });
+        }
+    },
+    methods: {
+        getResult() {
+            return this.result;
+        }
+    }
+});
+const getPlanet = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.defineNode({
+    category: 'Star Wars API',
+    name: 'Get planet by id',
+    color: 'green',
+    initialize: function () {
+        this.result = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.Object.create(null);
+    },
+    inputs: {
+        Id: {
+            group: 'Query',
+            type: 'string'
+        },
+    },
+    outputs: {
+        /**
+         *
+         **/
+        Fetched: {
+            group: 'Events',
+            type: 'signal'
+        },
+        /**
+         *
+         **/
+        Error: {
+            group: 'Events',
+            type: 'signal'
+        },
+        /**
+         * Unique identifier representing a specific planet.
+         *
+         * name: id
+         * type: integer
+         **/
+        Id: {
+            group: 'Response',
+            type: 'number'
+        },
+        /**
+         * Display name of planet.
+         *
+         * name: name
+         * type: string
+         **/
+        Name: {
+            group: 'Response',
+            type: 'string'
+        },
+    },
+    signals: {
+        Fetch: function () {
+            let path = '/api/planets/{id}';
+            let body = null;
+            let queryParameters = {};
+            path = path.replace('{id}', `${encodeURIComponent(this.inputs['Id']).toString()}`);
+            (0,_helper__WEBPACK_IMPORTED_MODULE_0__.makeRequest)('GET', _config__WEBPACK_IMPORTED_MODULE_1__.domain + path, queryParameters, body)
+                .then(({ json }) => {
+                for (const key of Object.keys(json)) {
+                    // Capitalize to make it more user friendly
+                    const newKey = (0,_helper__WEBPACK_IMPORTED_MODULE_0__.capitalize)(key);
+                    // Check if we have something that is not registered
+                    // then send a warning
+                    if (!this.hasOutput(newKey)) {
+                        this.sendWarning('swapi-warning', `Output pin is missing '${newKey}'`);
+                    }
+                    // Update the output pin
+                    // @ts-ignore - bad solution, but nothing we should worry about
+                    const newOutput = json[key];
+                    if (Array.isArray(newOutput)) {
+                        this.outputs[newKey] = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.Array.create(newOutput);
+                    }
+                    else if (typeof newOutput === 'object') {
+                        this.outputs[newKey] = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.Object.create(newOutput);
+                    }
+                    else {
+                        this.outputs[newKey] = newOutput;
+                    }
+                    // Flag that the output have been changed
+                    this.flagOutputDirty(newKey);
+                }
+                // Send the signal that we just recieved a response
+                this.sendSignalOnOutput('Fetched');
+            })
+                .catch(({ status, statusText }) => {
+                // Send a warning and a signal that we got a http error
+                this.sendWarning('swapi-error', `Http Error (${status}): ${statusText}`);
+                this.sendSignalOnOutput('Error');
+            });
+        }
+    },
+    methods: {
+        getResult() {
+            return this.result;
+        }
     }
 });
 _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_2__.defineModule({
     nodes: [
         debugLog,
         getFilms,
+        getFilm,
+        getPeople,
+        getPerson,
+        getPlanets,
+        getPlanet,
     ],
-    setup: function () {
+    setup() {
         // this is called once on startup
     }
 });

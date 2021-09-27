@@ -1,4 +1,4 @@
-export type People = {
+export type Person = {
   name: string;
   birth_year: string;
   eye_color: string;
@@ -12,10 +12,17 @@ export type People = {
   created: string;
   edited: string;
 
-  films: Array<string>;
-  species: Array<string>;
-  starships: Array<string>;
-  vehicles: Array<string>;
+  films: Array<number>;
+  species: Array<number>;
+  starships: Array<number>;
+  vehicles: Array<number>;
+};
+
+export type PersonCollection = {
+  count: number;
+  next: number | null;
+  previous: number | null;
+  results: Array<Person>;
 };
 
 export type Starship = {
@@ -36,8 +43,11 @@ export type Starship = {
   created: string;
   edited: string;
 
-  films: Array<string>;
-  pilots: Array<string>;
+  /** Extracted from url. */
+  id: number;
+
+  films: Array<number>;
+  pilots: Array<number>;
 };
 
 export type Vehicle = {
@@ -56,8 +66,8 @@ export type Vehicle = {
   created: string;
   edited: string;
 
-  films: Array<string>;
-  pilots: Array<string>;
+  films: Array<number>;
+  pilots: Array<number>;
 };
 
 export type Species = {
@@ -75,8 +85,8 @@ export type Species = {
   created: string;
   edited: string;
 
-  people: Array<string>;
-  films: Array<string>;
+  people: Array<number>;
+  films: Array<number>;
 };
 
 export type Planet = {
@@ -93,10 +103,17 @@ export type Planet = {
   created: string;
   edited: string;
 
-  films: Array<string>;
-  species: Array<string>;
-  starships: Array<string>;
-  vehicles: Array<string>;
+  films: Array<number>;
+  species: Array<number>;
+  starships: Array<number>;
+  vehicles: Array<number>;
+};
+
+export type PlanetCollection = {
+  count: number;
+  next: number | null;
+  previous: number | null;
+  results: Array<Planet>;
 };
 
 export type Film = {
@@ -110,11 +127,11 @@ export type Film = {
   created: string;
   edited: string;
 
-  species: Array<string>;
-  starships: Array<string>;
-  vehicles: Array<string>;
-  characters: Array<string>;
-  planets: Array<string>;
+  species: Array<number>;
+  starships: Array<number>;
+  vehicles: Array<number>;
+  characters: Array<number>;
+  planets: Array<number>;
 };
 
 export type FilmCollection = {

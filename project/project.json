@@ -5,33 +5,58 @@
             "name": "/App",
             "id": "943e3099-c191-ebb4-e366-f9b7e52d764a",
             "graph": {
-                "connections": [
-                    {
-                        "fromId": "2d50efab-897c-d8e5-f2de-00b98cf3547e",
-                        "fromProperty": "Results",
-                        "toId": "7c0aaccf-1a1b-3d30-0455-7c4fb8a09515",
-                        "toProperty": "items"
-                    },
-                    {
-                        "fromId": "255536ef-af4c-d3c4-24dd-6f86e106b34d",
-                        "fromProperty": "didMount",
-                        "toId": "2d50efab-897c-d8e5-f2de-00b98cf3547e",
-                        "toProperty": "Fetch"
-                    }
-                ],
+                "connections": [],
                 "roots": [
                     {
                         "id": "255536ef-af4c-d3c4-24dd-6f86e106b34d",
                         "type": "Group",
+                        "label": "App",
                         "x": 302,
                         "y": -39,
-                        "parameters": {},
+                        "parameters": {
+                            "scrollEnabled": false
+                        },
                         "ports": [],
                         "dynamicports": [],
                         "children": [
                             {
-                                "id": "2beb05b0-d567-dba9-ad26-9f68f4424fb5",
+                                "id": "e214c852-8da0-faf9-0af7-c880c37d680f",
                                 "type": "Group",
+                                "label": "Navigation",
+                                "parameters": {
+                                    "sizeMode": "contentHeight",
+                                    "minHeight": {
+                                        "value": 64,
+                                        "unit": "px"
+                                    },
+                                    "borderStyle": "solid"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "1e6e2c89-de90-ec1f-1c37-b0623e14c8e2",
+                                        "type": "Text",
+                                        "parameters": {
+                                            "text": "Star Wars\n",
+                                            "fontSize": {
+                                                "value": 32,
+                                                "unit": "px"
+                                            },
+                                            "alignX": "center",
+                                            "alignY": "center",
+                                            "textAlignX": "center"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "8b719c10-8b1d-8ddd-a95c-3651ca5cbf5b",
+                                "type": "Group",
+                                "label": "Container",
                                 "parameters": {
                                     "scrollEnabled": true
                                 },
@@ -39,32 +64,89 @@
                                 "dynamicports": [],
                                 "children": [
                                     {
-                                        "id": "7c0aaccf-1a1b-3d30-0455-7c4fb8a09515",
-                                        "type": "For Each",
+                                        "id": "927d0380-69b8-5fa0-81ee-51f664bb8028",
+                                        "type": "Page Stack",
                                         "parameters": {
-                                            "template": "/Film"
+                                            "useRoutes": true,
+                                            "pages": [
+                                                {
+                                                    "id": "8hda",
+                                                    "label": "Films"
+                                                },
+                                                {
+                                                    "id": "tstt",
+                                                    "label": "Film"
+                                                }
+                                            ],
+                                            "pageComp-8hda": "/Pages/Films",
+                                            "pageComp-tstt": "/Pages/Film",
+                                            "pagePath-tstt": "films/{id}"
                                         },
                                         "ports": [],
                                         "dynamicports": [
                                             {
-                                                "name": "itemOutputSignal-Open Movie",
-                                                "displayName": "Open Movie",
-                                                "type": "signal",
-                                                "plug": "output",
-                                                "group": "Item Signals",
-                                                "index": 5
+                                                "name": "pageComp-8hda",
+                                                "displayName": "Component",
+                                                "editorName": "Films | Component",
+                                                "plug": "input",
+                                                "type": "component",
+                                                "parent": "pages",
+                                                "parentItemId": "8hda",
+                                                "index": 20
                                             },
                                             {
-                                                "name": "inputMappingScript",
-                                                "type": {
-                                                    "name": "string",
-                                                    "codeeditor": "javascript"
-                                                },
-                                                "displayName": "Script",
-                                                "group": "Input Mapping",
-                                                "default": "// Here you add mappings between the properties of the item objects and the inputs of the components.\n// 'myComponentInput': 'myObjectProperty',\n// 'anotherComponentInput': function () { return object.get('someProperty') + ' ' + object.get('otherProp') }\n// These are the default mappings based on the selected template component.\nmap({\n\t'title': 'title',\n\t'release_date': 'release_date',\n\t'opening_crawl': 'opening_crawl',\n\t'director': 'director',\n\t'producer': 'producer',\n})\n",
+                                                "name": "pagePath-8hda",
+                                                "displayName": "Path",
+                                                "editorName": "Films | Path",
                                                 "plug": "input",
-                                                "index": 6
+                                                "type": "string",
+                                                "default": "films",
+                                                "parent": "pages",
+                                                "parentItemId": "8hda",
+                                                "index": 21
+                                            },
+                                            {
+                                                "name": "pageComp-tstt",
+                                                "displayName": "Component",
+                                                "editorName": "Film | Component",
+                                                "plug": "input",
+                                                "type": "component",
+                                                "parent": "pages",
+                                                "parentItemId": "tstt",
+                                                "index": 22
+                                            },
+                                            {
+                                                "name": "pagePath-tstt",
+                                                "displayName": "Path",
+                                                "editorName": "Film | Path",
+                                                "plug": "input",
+                                                "type": "string",
+                                                "default": "film",
+                                                "parent": "pages",
+                                                "parentItemId": "tstt",
+                                                "index": 23
+                                            },
+                                            {
+                                                "plug": "input",
+                                                "type": {
+                                                    "name": "enum",
+                                                    "enums": [
+                                                        {
+                                                            "label": "Films",
+                                                            "value": "8hda"
+                                                        },
+                                                        {
+                                                            "label": "Film",
+                                                            "value": "tstt"
+                                                        }
+                                                    ],
+                                                    "allowEditOnly": true
+                                                },
+                                                "group": "General",
+                                                "displayName": "Start Page",
+                                                "name": "startPage",
+                                                "default": "8hda",
+                                                "index": 24
                                             }
                                         ],
                                         "children": []
@@ -72,28 +154,166 @@
                                 ]
                             }
                         ]
+                    }
+                ]
+            },
+            "metadata": {
+                "canvasPos": {
+                    "x": -259.772616985582,
+                    "y": -20.92658518068167
+                },
+                "canvasSize": {
+                    "width": "451px",
+                    "height": "809px"
+                }
+            }
+        },
+        {
+            "name": "/Components/Banner-Person",
+            "id": "b692c2b4-40d4-d59e-7c8d-a009411ec002",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "bbde6c51-eddb-9834-20f9-05e96a4b18ae",
+                        "fromProperty": "name",
+                        "toId": "c50d7762-a254-753a-11da-cd48a0ea8c0e",
+                        "toProperty": "text"
                     },
                     {
-                        "id": "2d50efab-897c-d8e5-f2de-00b98cf3547e",
-                        "type": "Get all films",
-                        "x": -21.836519402698343,
-                        "y": 21.851453714118918,
+                        "fromId": "3e9d815c-3045-601e-807d-78765baab3c4",
+                        "fromProperty": "formatted",
+                        "toId": "05561612-bbb8-44bd-81e7-e61ed1cd2ee6",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "bbde6c51-eddb-9834-20f9-05e96a4b18ae",
+                        "fromProperty": "birth_year",
+                        "toId": "3e9d815c-3045-601e-807d-78765baab3c4",
+                        "toProperty": "date"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "bbde6c51-eddb-9834-20f9-05e96a4b18ae",
+                        "type": "Component Inputs",
+                        "x": -328,
+                        "y": 4,
                         "parameters": {},
+                        "ports": [
+                            {
+                                "name": "name",
+                                "plug": "output",
+                                "type": "*",
+                                "index": 0
+                            },
+                            {
+                                "name": "birth_year",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 1
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "f2e186f9-6a98-d06e-2542-07861e5f3916",
+                        "type": "Component Outputs",
+                        "x": 704,
+                        "y": -12,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "Success",
+                                "plug": "input",
+                                "type": "*",
+                                "index": 0
+                            },
+                            {
+                                "name": "Failure",
+                                "plug": "input",
+                                "type": "*",
+                                "index": 1
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "5bc5dbe1-43ee-f174-9015-d320ee75432c",
+                        "type": "Group",
+                        "x": 160,
+                        "y": 102,
+                        "parameters": {
+                            "sizeMode": "contentHeight",
+                            "borderStyle": "solid",
+                            "borderRadius": {
+                                "value": 6,
+                                "unit": "px"
+                            },
+                            "marginBottom": {
+                                "value": 10,
+                                "unit": "px"
+                            }
+                        },
                         "ports": [],
                         "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "c50d7762-a254-753a-11da-cd48a0ea8c0e",
+                                "type": "Text",
+                                "parameters": {},
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "05561612-bbb8-44bd-81e7-e61ed1cd2ee6",
+                                "type": "Text",
+                                "label": "birth_year",
+                                "parameters": {},
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "3e9d815c-3045-601e-807d-78765baab3c4",
+                        "type": "String Format",
+                        "x": -73,
+                        "y": 208,
+                        "parameters": {
+                            "format": "Born {date}"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "date",
+                                "type": "string",
+                                "plug": "input",
+                                "index": 2
+                            }
+                        ],
                         "children": []
                     }
                 ]
             },
             "metadata": {
                 "canvasPos": {
-                    "x": -260,
-                    "y": -20.926582460319505
+                    "x": 2189.5600222971916,
+                    "y": 1078.2773681437639
+                },
+                "canvasSize": {
+                    "width": "898px",
+                    "height": "307px"
                 }
             }
         },
         {
-            "name": "/Film",
+            "name": "/Components/Film",
             "id": "67ee7854-7df0-3681-1161-0cb45a2fe8a1",
             "graph": {
                 "connections": [
@@ -150,6 +370,12 @@
                         "fromProperty": "producer",
                         "toId": "42741222-596e-78ee-23bc-41af1ed6f8c8",
                         "toProperty": "producer"
+                    },
+                    {
+                        "fromId": "48706366-8f1a-4851-0f13-b8df71a8e5f1",
+                        "fromProperty": "id",
+                        "toId": "e403f813-6863-4fcc-624e-1b30f60098fd",
+                        "toProperty": "id"
                     }
                 ],
                 "roots": [
@@ -197,6 +423,14 @@
                                     "name": "*"
                                 },
                                 "index": 1
+                            },
+                            {
+                                "name": "id",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 6
                             }
                         ],
                         "dynamicports": [],
@@ -214,6 +448,14 @@
                                 "plug": "input",
                                 "type": "*",
                                 "index": 0
+                            },
+                            {
+                                "name": "id",
+                                "plug": "input",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 1
                             }
                         ],
                         "dynamicports": [],
@@ -288,7 +530,8 @@
                                             "paddingLeft": {
                                                 "value": 10,
                                                 "unit": "px"
-                                            }
+                                            },
+                                            "pointerEventsMode": "explicit"
                                         },
                                         "ports": [],
                                         "dynamicports": [],
@@ -407,7 +650,8 @@
                                             "paddingTop": {
                                                 "value": 10,
                                                 "unit": "px"
-                                            }
+                                            },
+                                            "sizeMode": "contentHeight"
                                         },
                                         "ports": [],
                                         "dynamicports": [],
@@ -498,17 +742,1076 @@
             },
             "metadata": {
                 "canvasPos": {
-                    "x": 224.37394618136005,
-                    "y": -14.440495591521154
+                    "x": 1487.3931213799158,
+                    "y": 908.2812558697849
                 },
                 "canvasSize": {
-                    "width": "541px",
-                    "height": "346px"
+                    "width": "529px",
+                    "height": "321px"
+                }
+            }
+        },
+        {
+            "name": "/Pages/Film",
+            "id": "a61e79cc-cbe0-9bf0-5548-afdcf15ad41b",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "14702884-c0e2-1a96-1c8f-c381f14d8967",
+                        "fromProperty": "onClick",
+                        "toId": "5796218a-3bb1-5241-dc8f-b40f75b0a090",
+                        "toProperty": "navigate"
+                    },
+                    {
+                        "fromId": "24f372d6-56c0-0aa2-a86f-3861aef77221",
+                        "fromProperty": "id",
+                        "toId": "ae9a4b63-c77d-7db9-5d05-fb0cce8fba50",
+                        "toProperty": "Id"
+                    },
+                    {
+                        "fromId": "d551ca5b-9b53-81d1-273b-81035886b988",
+                        "fromProperty": "didMount",
+                        "toId": "ae9a4b63-c77d-7db9-5d05-fb0cce8fba50",
+                        "toProperty": "Fetch"
+                    },
+                    {
+                        "fromId": "ae9a4b63-c77d-7db9-5d05-fb0cce8fba50",
+                        "fromProperty": "Title",
+                        "toId": "224e96b0-44c2-77be-3c52-919e7fcc0cc0",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "5f6aed24-6547-a37d-7af2-4d5e16c4d172",
+                        "fromProperty": "formatted",
+                        "toId": "23a0c365-b210-087a-5157-ec636d37a73c",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "be97d90f-9f63-8c61-95cb-4db6dfdb864b",
+                        "fromProperty": "formatted",
+                        "toId": "e309f026-0b43-29a1-3ba7-fbf645a9f729",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "80a30b41-2aec-d43c-ae08-388558711a27",
+                        "fromProperty": "formatted",
+                        "toId": "fb2acb57-9d65-7e0e-aa38-8c4ce3ee24f1",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "ae9a4b63-c77d-7db9-5d05-fb0cce8fba50",
+                        "fromProperty": "Release_date",
+                        "toId": "5f6aed24-6547-a37d-7af2-4d5e16c4d172",
+                        "toProperty": "release_date"
+                    },
+                    {
+                        "fromId": "ae9a4b63-c77d-7db9-5d05-fb0cce8fba50",
+                        "fromProperty": "Director",
+                        "toId": "be97d90f-9f63-8c61-95cb-4db6dfdb864b",
+                        "toProperty": "director"
+                    },
+                    {
+                        "fromId": "ae9a4b63-c77d-7db9-5d05-fb0cce8fba50",
+                        "fromProperty": "Producer",
+                        "toId": "80a30b41-2aec-d43c-ae08-388558711a27",
+                        "toProperty": "producer"
+                    },
+                    {
+                        "fromId": "ae9a4b63-c77d-7db9-5d05-fb0cce8fba50",
+                        "fromProperty": "Opening_crawl",
+                        "toId": "7bb5610f-1791-b444-89c0-e3d5ce0523b3",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "d551ca5b-9b53-81d1-273b-81035886b988",
+                        "fromProperty": "didMount",
+                        "toId": "4b24cb2a-30d2-9513-0ab2-02aa706c6c33",
+                        "toProperty": "Fetch"
+                    },
+                    {
+                        "fromId": "4b24cb2a-30d2-9513-0ab2-02aa706c6c33",
+                        "fromProperty": "Results",
+                        "toId": "1a703a15-7f14-f616-30e0-e8efc1cf1bfe",
+                        "toProperty": "items"
+                    },
+                    {
+                        "fromId": "1a703a15-7f14-f616-30e0-e8efc1cf1bfe",
+                        "fromProperty": "items",
+                        "toId": "142e5044-39cb-7d1c-65eb-6f0a5674e8fd",
+                        "toProperty": "items"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "d551ca5b-9b53-81d1-273b-81035886b988",
+                        "type": "Group",
+                        "label": "Page",
+                        "x": 302,
+                        "y": -39,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "e1f0bf51-6d87-0cb3-d7d0-6118516aba11",
+                                "type": "Group",
+                                "parameters": {
+                                    "scrollEnabled": true,
+                                    "paddingTop": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    },
+                                    "paddingBottom": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    },
+                                    "paddingLeft": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    },
+                                    "paddingRight": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    },
+                                    "sizeMode": "contentHeight"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "14702884-c0e2-1a96-1c8f-c381f14d8967",
+                                        "type": "Button",
+                                        "label": "Go Back",
+                                        "parameters": {
+                                            "sizeMode": "contentHeight",
+                                            "label": "Back"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "9adbe4d1-4211-96ca-9127-b84e47a80990",
+                                "type": "Group",
+                                "parameters": {
+                                    "paddingLeft": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    },
+                                    "paddingRight": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    },
+                                    "paddingTop": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "paddingBottom": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "sizeMode": "contentHeight"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "224e96b0-44c2-77be-3c52-919e7fcc0cc0",
+                                        "type": "Text",
+                                        "label": "Title",
+                                        "parameters": {
+                                            "text": "{title}",
+                                            "fontSize": {
+                                                "value": 32,
+                                                "unit": "px"
+                                            }
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "23a0c365-b210-087a-5157-ec636d37a73c",
+                                        "type": "Text",
+                                        "label": "Release date",
+                                        "parameters": {
+                                            "fontFamily": "Lucida Console",
+                                            "fontSize": {
+                                                "value": 12,
+                                                "unit": "px"
+                                            },
+                                            "marginTop": {
+                                                "value": 10,
+                                                "unit": "px"
+                                            },
+                                            "marginBottom": {
+                                                "value": 10,
+                                                "unit": "px"
+                                            },
+                                            "textTransform": "lowercase"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "72401bfd-c593-509e-cd75-b9cf30eab588",
+                                "type": "Group",
+                                "parameters": {
+                                    "paddingLeft": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "paddingRight": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "sizeMode": "contentHeight",
+                                    "paddingTop": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    }
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "e309f026-0b43-29a1-3ba7-fbf645a9f729",
+                                        "type": "Text",
+                                        "label": "Director",
+                                        "parameters": {},
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "fb2acb57-9d65-7e0e-aa38-8c4ce3ee24f1",
+                                        "type": "Text",
+                                        "label": "Producer",
+                                        "parameters": {},
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "b94b6095-6c1e-a44f-ddc7-0d2a8b7e0be4",
+                                "type": "Group",
+                                "parameters": {
+                                    "paddingLeft": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "paddingRight": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "paddingTop": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "sizeMode": "contentHeight"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "7bb5610f-1791-b444-89c0-e3d5ce0523b3",
+                                        "type": "Text",
+                                        "label": "Description",
+                                        "parameters": {
+                                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean orci tortor, placerat sit amet porta a, hendrerit at leo. Pellentesque pretium ornare sem, ut faucibus ipsum auctor sit amet. Etiam eget luctus augue, vitae ornare magna. Fusce non quam augue. Vivamus sed tincidunt mauris, id finibus turpis. Cras vel elit feugiat sapien ornare vehicula. Suspendisse purus ante, sodales et aliquam sit amet, posuere non tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue neque in varius scelerisque. Donec dictum, justo non laoreet commodo, eros lectus condimentum tellus, ut iaculis nisi libero eu eros. Praesent posuere urna ut elementum laoreet. Cras non facilisis massa. Quisque arcu ex, efficitur in neque et, dictum porta nibh. Nulla ornare venenatis dictum. Aenean lectus tellus, auctor sed quam vestibulum, volutpat pulvinar sem.\n\nUt fermentum elementum luctus. Ut nec ex pretium, facilisis libero nec, feugiat nibh. Nunc eget congue sapien. Nullam sollicitudin quis erat a rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed ultrices non augue nec fringilla. Aliquam vitae malesuada ligula, sed hendrerit sem. Pellentesque a tempor erat. Vivamus semper a enim in viverra. Proin ut dignissim mi, vel mattis arcu. Praesent porta auctor leo, at sagittis ante tincidunt vitae. Duis id ligula tempus, pretium nisi ac, elementum risus.",
+                                            "style": "/* example:\n{\n\tbackgroundColor: 'red'\n}\n*/\n\n{\n    overflow: 'hidden'\n}\n"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "3c6e5b58-fa2c-51b6-c45e-238bfdcf9366",
+                                "type": "Group",
+                                "parameters": {
+                                    "paddingLeft": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "paddingTop": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "paddingRight": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    }
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "35b01e95-4bce-2514-b7f1-ddf5754351ad",
+                                        "type": "Text",
+                                        "label": "Characters",
+                                        "parameters": {
+                                            "text": "Characters",
+                                            "fontSize": {
+                                                "value": 24,
+                                                "unit": "px"
+                                            },
+                                            "marginTop": {
+                                                "value": 20,
+                                                "unit": "px"
+                                            },
+                                            "textAlignX": "center"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "142e5044-39cb-7d1c-65eb-6f0a5674e8fd",
+                                        "type": "For Each",
+                                        "parameters": {
+                                            "template": "/Components/Banner-Person"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [
+                                            {
+                                                "name": "itemOutput-Success",
+                                                "displayName": "Success",
+                                                "type": "*",
+                                                "plug": "output",
+                                                "group": "Item Outputs",
+                                                "index": 5
+                                            },
+                                            {
+                                                "name": "itemOutput-Failure",
+                                                "displayName": "Failure",
+                                                "type": "*",
+                                                "plug": "output",
+                                                "group": "Item Outputs",
+                                                "index": 6
+                                            },
+                                            {
+                                                "name": "inputMappingScript",
+                                                "type": {
+                                                    "name": "string",
+                                                    "codeeditor": "javascript"
+                                                },
+                                                "displayName": "Script",
+                                                "group": "Input Mapping",
+                                                "default": "// Here you add mappings between the properties of the item objects and the inputs of the components.\n// 'myComponentInput': 'myObjectProperty',\n// 'anotherComponentInput': function () { return object.get('someProperty') + ' ' + object.get('otherProp') }\n// These are the default mappings based on the selected template component.\nmap({\n\t'name': 'name',\n\t'birth_year': 'birth_year',\n})\n",
+                                                "plug": "input",
+                                                "index": 7
+                                            }
+                                        ],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "5796218a-3bb1-5241-dc8f-b40f75b0a090",
+                        "type": "PageStackNavigateBack",
+                        "x": 613.9191824356782,
+                        "y": 69.12567676591277,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "24f372d6-56c0-0aa2-a86f-3861aef77221",
+                        "type": "Component Inputs",
+                        "x": -1146.5335433934288,
+                        "y": -1.2850063131843257,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "id",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 1
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "ae9a4b63-c77d-7db9-5d05-fb0cce8fba50",
+                        "type": "Get film by id",
+                        "x": -949.3997937746204,
+                        "y": -0.3056529043421534,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "5f6aed24-6547-a37d-7af2-4d5e16c4d172",
+                        "type": "String Format",
+                        "label": "String Format",
+                        "x": 126.02514810175649,
+                        "y": 330.7108528684151,
+                        "parameters": {
+                            "format": "Released {release_date}"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "release_date",
+                                "type": "string",
+                                "plug": "input",
+                                "index": 2
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "be97d90f-9f63-8c61-95cb-4db6dfdb864b",
+                        "type": "String Format",
+                        "label": "String Format",
+                        "x": 122.4167347951693,
+                        "y": 441.3688609370986,
+                        "parameters": {
+                            "format": "Director: {director}"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "director",
+                                "type": "string",
+                                "plug": "input",
+                                "index": 2
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "80a30b41-2aec-d43c-ae08-388558711a27",
+                        "type": "String Format",
+                        "label": "String Format",
+                        "x": 121.21393035964002,
+                        "y": 531.5791936017865,
+                        "parameters": {
+                            "format": "Producers: {producer}"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "producer",
+                                "type": "string",
+                                "plug": "input",
+                                "index": 2
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "4b24cb2a-30d2-9513-0ab2-02aa706c6c33",
+                        "type": "Get all people",
+                        "x": -989.6385976254412,
+                        "y": 439.3976804724167,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "1a703a15-7f14-f616-30e0-e8efc1cf1bfe",
+                        "type": "Filter Collection",
+                        "x": -570.0844296881362,
+                        "y": 623.1334712587544,
+                        "parameters": {
+                            "filterFilter": "characters",
+                            "filterFilterOp-characters": "eq",
+                            "filterFilterOption-case-characters": false,
+                            "filterFilterType-characters": "number"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "type": "boolean",
+                                "plug": "input",
+                                "group": "Limit",
+                                "name": "filterEnableLimit",
+                                "displayName": "Use limit",
+                                "index": 7
+                            },
+                            {
+                                "type": {
+                                    "name": "stringlist",
+                                    "allowEditOnly": true
+                                },
+                                "plug": "input",
+                                "group": "Filter",
+                                "name": "filterFilter",
+                                "displayName": "Filter",
+                                "index": 8
+                            },
+                            {
+                                "type": {
+                                    "name": "stringlist",
+                                    "allowEditOnly": true
+                                },
+                                "plug": "input",
+                                "group": "Sort",
+                                "name": "filterSort",
+                                "displayName": "Sort",
+                                "index": 9
+                            },
+                            {
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        {
+                                            "value": "string",
+                                            "label": "String"
+                                        },
+                                        {
+                                            "value": "number",
+                                            "label": "Number"
+                                        },
+                                        {
+                                            "value": "boolean",
+                                            "label": "Boolean"
+                                        }
+                                    ]
+                                },
+                                "default": "string",
+                                "plug": "input",
+                                "group": "characters filter",
+                                "displayName": "Type",
+                                "editorName": "characters filter | Type",
+                                "name": "filterFilterType-characters",
+                                "index": 10
+                            },
+                            {
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        {
+                                            "value": "eq",
+                                            "label": "Equals"
+                                        },
+                                        {
+                                            "value": "neq",
+                                            "label": "Not Equals"
+                                        },
+                                        {
+                                            "value": "lt",
+                                            "label": "Less than"
+                                        },
+                                        {
+                                            "value": "gt",
+                                            "label": "Greater than"
+                                        },
+                                        {
+                                            "value": "gte",
+                                            "label": "Greater than or equal"
+                                        },
+                                        {
+                                            "value": "lte",
+                                            "label": "Less than or equal"
+                                        }
+                                    ]
+                                },
+                                "default": "eq",
+                                "plug": "input",
+                                "group": "characters filter",
+                                "displayName": "Op",
+                                "editorName": "characters filter| Op",
+                                "name": "filterFilterOp-characters",
+                                "index": 11
+                            },
+                            {
+                                "type": "number",
+                                "plug": "input",
+                                "group": "characters filter",
+                                "displayName": "Value",
+                                "editorName": "characters Filter Value",
+                                "name": "filterFilterValue-characters",
+                                "index": 12
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            },
+            "metadata": {
+                "canvasPos": {
+                    "x": 2210.7127573744738,
+                    "y": -97.73831947839045
+                },
+                "canvasSize": {
+                    "width": "543px",
+                    "height": "818px"
+                }
+            }
+        },
+        {
+            "name": "/Pages/Films",
+            "id": "79f5249b-fb1d-ac42-b110-f50c2fcfe859",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "4b8ced91-d4c7-ea4b-2252-5e1db39bb678",
+                        "fromProperty": "didMount",
+                        "toId": "a687a83b-d1d3-7213-1911-5cfe7af4eb58",
+                        "toProperty": "Fetch"
+                    },
+                    {
+                        "fromId": "a687a83b-d1d3-7213-1911-5cfe7af4eb58",
+                        "fromProperty": "Results",
+                        "toId": "6d4650e4-5b3f-df62-7ffb-2cb2339d8514",
+                        "toProperty": "items"
+                    },
+                    {
+                        "fromId": "c54a7195-0c05-73da-4d7e-a8e118afabc4",
+                        "fromProperty": "onTextChanged",
+                        "toId": "6d4650e4-5b3f-df62-7ffb-2cb2339d8514",
+                        "toProperty": "filterFilterValue-title"
+                    },
+                    {
+                        "fromId": "6d4650e4-5b3f-df62-7ffb-2cb2339d8514",
+                        "fromProperty": "items",
+                        "toId": "9f0b8ac2-9bd9-5394-2b3c-a97d2e61fbd5",
+                        "toProperty": "items"
+                    },
+                    {
+                        "fromId": "9f0b8ac2-9bd9-5394-2b3c-a97d2e61fbd5",
+                        "fromProperty": "itemOutputSignal-Open Movie",
+                        "toId": "0b3082ea-b4f2-4ea5-ef98-63e707c986e7",
+                        "toProperty": "navigate"
+                    },
+                    {
+                        "fromId": "9f0b8ac2-9bd9-5394-2b3c-a97d2e61fbd5",
+                        "fromProperty": "itemOutput-id",
+                        "toId": "0b3082ea-b4f2-4ea5-ef98-63e707c986e7",
+                        "toProperty": "pm-id"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "4b8ced91-d4c7-ea4b-2252-5e1db39bb678",
+                        "type": "Group",
+                        "label": "Page",
+                        "x": -228.16348059730166,
+                        "y": 22,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "37901980-13b1-6e48-5760-79bd61b2a492",
+                                "type": "Group",
+                                "parameters": {
+                                    "maxHeight": {
+                                        "value": 50,
+                                        "unit": "px"
+                                    },
+                                    "backgroundColor": "#FFFFFF",
+                                    "sizeMode": "contentHeight",
+                                    "paddingLeft": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "paddingRight": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "paddingTop": {
+                                        "value": 5,
+                                        "unit": "px"
+                                    },
+                                    "minHeight": {
+                                        "value": 50,
+                                        "unit": "px"
+                                    },
+                                    "marginLeft": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    },
+                                    "marginRight": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    },
+                                    "marginTop": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    },
+                                    "paddingBottom": {
+                                        "value": 5,
+                                        "unit": "px"
+                                    },
+                                    "marginBottom": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    },
+                                    "borderRadius": {
+                                        "value": 8,
+                                        "unit": "px"
+                                    },
+                                    "borderStyle": "solid",
+                                    "borderColor": "rgba(0,0,0,0.2)"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "c54a7195-0c05-73da-4d7e-a8e118afabc4",
+                                        "type": "Text Input",
+                                        "label": "Search",
+                                        "parameters": {
+                                            "sizeMode": "explicit"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "146c3959-0863-e385-d8a2-ff58cf8c3374",
+                                "type": "Group",
+                                "parameters": {
+                                    "scrollEnabled": true
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "9f0b8ac2-9bd9-5394-2b3c-a97d2e61fbd5",
+                                        "type": "For Each",
+                                        "label": "Films",
+                                        "parameters": {
+                                            "template": "/Components/Film"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [
+                                            {
+                                                "name": "itemOutputSignal-Open Movie",
+                                                "displayName": "Open Movie",
+                                                "type": "signal",
+                                                "plug": "output",
+                                                "group": "Item Signals",
+                                                "index": 5
+                                            },
+                                            {
+                                                "name": "itemOutput-id",
+                                                "displayName": "id",
+                                                "type": {
+                                                    "name": "*"
+                                                },
+                                                "plug": "output",
+                                                "group": "Item Outputs",
+                                                "index": 6
+                                            },
+                                            {
+                                                "name": "inputMappingScript",
+                                                "type": {
+                                                    "name": "string",
+                                                    "codeeditor": "javascript"
+                                                },
+                                                "displayName": "Script",
+                                                "group": "Input Mapping",
+                                                "default": "// Here you add mappings between the properties of the item objects and the inputs of the components.\n// 'myComponentInput': 'myObjectProperty',\n// 'anotherComponentInput': function () { return object.get('someProperty') + ' ' + object.get('otherProp') }\n// These are the default mappings based on the selected template component.\nmap({\n\t'title': 'title',\n\t'release_date': 'release_date',\n\t'director': 'director',\n\t'producer': 'producer',\n\t'opening_crawl': 'opening_crawl',\n\t'id': 'id',\n})\n",
+                                                "plug": "input",
+                                                "index": 7
+                                            }
+                                        ],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "a687a83b-d1d3-7213-1911-5cfe7af4eb58",
+                        "type": "Get all films",
+                        "x": -562,
+                        "y": 83.85145371411892,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "6d4650e4-5b3f-df62-7ffb-2cb2339d8514",
+                        "type": "Filter Collection",
+                        "x": -560.0817402986509,
+                        "y": 210.09239352372612,
+                        "parameters": {
+                            "filterFilter": "title",
+                            "enabled": true,
+                            "filterFilterOp-title": "regex",
+                            "filterFilterOption-case-title": false
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "type": "boolean",
+                                "plug": "input",
+                                "group": "Limit",
+                                "name": "filterEnableLimit",
+                                "displayName": "Use limit",
+                                "index": 7
+                            },
+                            {
+                                "type": {
+                                    "name": "stringlist",
+                                    "allowEditOnly": true
+                                },
+                                "plug": "input",
+                                "group": "Filter",
+                                "name": "filterFilter",
+                                "displayName": "Filter",
+                                "index": 8
+                            },
+                            {
+                                "type": {
+                                    "name": "stringlist",
+                                    "allowEditOnly": true
+                                },
+                                "plug": "input",
+                                "group": "Sort",
+                                "name": "filterSort",
+                                "displayName": "Sort",
+                                "index": 9
+                            },
+                            {
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        {
+                                            "value": "string",
+                                            "label": "String"
+                                        },
+                                        {
+                                            "value": "number",
+                                            "label": "Number"
+                                        },
+                                        {
+                                            "value": "boolean",
+                                            "label": "Boolean"
+                                        }
+                                    ]
+                                },
+                                "default": "string",
+                                "plug": "input",
+                                "group": "title filter",
+                                "displayName": "Type",
+                                "editorName": "title filter | Type",
+                                "name": "filterFilterType-title",
+                                "index": 10
+                            },
+                            {
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        {
+                                            "value": "eq",
+                                            "label": "Equals"
+                                        },
+                                        {
+                                            "value": "neq",
+                                            "label": "Not Equals"
+                                        },
+                                        {
+                                            "value": "regex",
+                                            "label": "Matches RegEx"
+                                        }
+                                    ]
+                                },
+                                "default": "eq",
+                                "plug": "input",
+                                "group": "title filter",
+                                "displayName": "Op",
+                                "editorName": "title filter| Op",
+                                "name": "filterFilterOp-title",
+                                "index": 11
+                            },
+                            {
+                                "type": "boolean",
+                                "default": false,
+                                "plug": "input",
+                                "group": "title filter",
+                                "displayName": "Case sensitive",
+                                "editorName": "title filter| Case",
+                                "name": "filterFilterOption-case-title",
+                                "index": 12
+                            },
+                            {
+                                "type": "string",
+                                "plug": "input",
+                                "group": "title filter",
+                                "displayName": "Value",
+                                "editorName": "title Filter Value",
+                                "name": "filterFilterValue-title",
+                                "index": 13
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "0b3082ea-b4f2-4ea5-ef98-63e707c986e7",
+                        "type": "PageStackNavigate",
+                        "x": 92.75570183837635,
+                        "y": 313.6256767659128,
+                        "parameters": {
+                            "target": "tstt",
+                            "tr-darkoverlay": false,
+                            "tr-crossfade": true
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "transition",
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        "None",
+                                        "Push",
+                                        "Popup"
+                                    ]
+                                },
+                                "default": "Push",
+                                "displayName": "Transition",
+                                "group": "Transition",
+                                "index": 4
+                            },
+                            {
+                                "name": "tr-direction",
+                                "displayName": "Direction",
+                                "group": "Transition",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        "Right",
+                                        "Left",
+                                        "Up",
+                                        "Down",
+                                        "In",
+                                        "Out"
+                                    ]
+                                },
+                                "default": "Left",
+                                "plug": "input",
+                                "index": 5
+                            },
+                            {
+                                "name": "tr-shift",
+                                "displayName": "Shift Distance",
+                                "group": "Transition",
+                                "type": {
+                                    "name": "number",
+                                    "units": [
+                                        "%",
+                                        "px"
+                                    ]
+                                },
+                                "default": {
+                                    "value": 25,
+                                    "unit": "%"
+                                },
+                                "plug": "input",
+                                "index": 6
+                            },
+                            {
+                                "name": "tr-crossfade",
+                                "displayName": "Crossfade",
+                                "group": "Transition",
+                                "type": "boolean",
+                                "default": false,
+                                "plug": "input",
+                                "index": 7
+                            },
+                            {
+                                "name": "tr-darkoverlay",
+                                "displayName": "Dark Overlay",
+                                "group": "Transition",
+                                "type": "boolean",
+                                "default": true,
+                                "plug": "input",
+                                "index": 8
+                            },
+                            {
+                                "name": "tr-darkoverlayamount",
+                                "displayName": "Dark Overlay Amount",
+                                "group": "Transition",
+                                "type": "number",
+                                "default": 0.5,
+                                "plug": "input",
+                                "index": 9
+                            },
+                            {
+                                "name": "tr-timing",
+                                "displayName": "Timing",
+                                "group": "Transition",
+                                "type": "curve",
+                                "plug": "input",
+                                "index": 10
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        {
+                                            "label": "Films",
+                                            "value": "8hda"
+                                        },
+                                        {
+                                            "label": "Film",
+                                            "value": "tstt"
+                                        }
+                                    ],
+                                    "allowEditOnly": true
+                                },
+                                "group": "General",
+                                "displayName": "Target Page",
+                                "name": "target",
+                                "default": "8hda",
+                                "index": 11
+                            },
+                            {
+                                "name": "pm-id",
+                                "displayName": "id",
+                                "type": "*",
+                                "plug": "input",
+                                "group": "Parameters",
+                                "index": 12
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            },
+            "metadata": {
+                "canvasPos": {
+                    "x": 1489.716445112555,
+                    "y": -67.69169714390425
+                },
+                "canvasSize": {
+                    "width": "527px",
+                    "height": "781px"
                 }
             }
         }
     ],
-    "settings": {},
+    "settings": {
+        "navigationPathType": "path"
+    },
     "rootNodeId": "255536ef-af4c-d3c4-24dd-6f86e106b34d",
     "version": "1",
     "metadata": {
