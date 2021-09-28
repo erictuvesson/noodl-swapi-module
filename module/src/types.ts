@@ -12,6 +12,9 @@ export type Person = {
   created: string;
   edited: string;
 
+  /** Extracted from url. */
+  id: number;
+
   films: Array<number>;
   species: Array<number>;
   starships: Array<number>;

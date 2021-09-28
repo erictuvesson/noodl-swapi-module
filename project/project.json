@@ -2,174 +2,7 @@
     "name": "SWAPI",
     "components": [
         {
-            "name": "/App",
-            "id": "943e3099-c191-ebb4-e366-f9b7e52d764a",
-            "graph": {
-                "connections": [],
-                "roots": [
-                    {
-                        "id": "255536ef-af4c-d3c4-24dd-6f86e106b34d",
-                        "type": "Group",
-                        "label": "App",
-                        "x": 302,
-                        "y": -39,
-                        "parameters": {
-                            "scrollEnabled": false
-                        },
-                        "ports": [],
-                        "dynamicports": [],
-                        "children": [
-                            {
-                                "id": "e214c852-8da0-faf9-0af7-c880c37d680f",
-                                "type": "Group",
-                                "label": "Navigation",
-                                "parameters": {
-                                    "sizeMode": "contentHeight",
-                                    "minHeight": {
-                                        "value": 64,
-                                        "unit": "px"
-                                    },
-                                    "borderStyle": "solid"
-                                },
-                                "ports": [],
-                                "dynamicports": [],
-                                "children": [
-                                    {
-                                        "id": "1e6e2c89-de90-ec1f-1c37-b0623e14c8e2",
-                                        "type": "Text",
-                                        "parameters": {
-                                            "text": "Star Wars\n",
-                                            "fontSize": {
-                                                "value": 32,
-                                                "unit": "px"
-                                            },
-                                            "alignX": "center",
-                                            "alignY": "center",
-                                            "textAlignX": "center"
-                                        },
-                                        "ports": [],
-                                        "dynamicports": [],
-                                        "children": []
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "8b719c10-8b1d-8ddd-a95c-3651ca5cbf5b",
-                                "type": "Group",
-                                "label": "Container",
-                                "parameters": {
-                                    "scrollEnabled": true
-                                },
-                                "ports": [],
-                                "dynamicports": [],
-                                "children": [
-                                    {
-                                        "id": "927d0380-69b8-5fa0-81ee-51f664bb8028",
-                                        "type": "Page Stack",
-                                        "parameters": {
-                                            "useRoutes": true,
-                                            "pages": [
-                                                {
-                                                    "id": "8hda",
-                                                    "label": "Films"
-                                                },
-                                                {
-                                                    "id": "tstt",
-                                                    "label": "Film"
-                                                }
-                                            ],
-                                            "pageComp-8hda": "/Pages/Films",
-                                            "pageComp-tstt": "/Pages/Film",
-                                            "pagePath-tstt": "films/{id}"
-                                        },
-                                        "ports": [],
-                                        "dynamicports": [
-                                            {
-                                                "name": "pageComp-8hda",
-                                                "displayName": "Component",
-                                                "editorName": "Films | Component",
-                                                "plug": "input",
-                                                "type": "component",
-                                                "parent": "pages",
-                                                "parentItemId": "8hda",
-                                                "index": 20
-                                            },
-                                            {
-                                                "name": "pagePath-8hda",
-                                                "displayName": "Path",
-                                                "editorName": "Films | Path",
-                                                "plug": "input",
-                                                "type": "string",
-                                                "default": "films",
-                                                "parent": "pages",
-                                                "parentItemId": "8hda",
-                                                "index": 21
-                                            },
-                                            {
-                                                "name": "pageComp-tstt",
-                                                "displayName": "Component",
-                                                "editorName": "Film | Component",
-                                                "plug": "input",
-                                                "type": "component",
-                                                "parent": "pages",
-                                                "parentItemId": "tstt",
-                                                "index": 22
-                                            },
-                                            {
-                                                "name": "pagePath-tstt",
-                                                "displayName": "Path",
-                                                "editorName": "Film | Path",
-                                                "plug": "input",
-                                                "type": "string",
-                                                "default": "film",
-                                                "parent": "pages",
-                                                "parentItemId": "tstt",
-                                                "index": 23
-                                            },
-                                            {
-                                                "plug": "input",
-                                                "type": {
-                                                    "name": "enum",
-                                                    "enums": [
-                                                        {
-                                                            "label": "Films",
-                                                            "value": "8hda"
-                                                        },
-                                                        {
-                                                            "label": "Film",
-                                                            "value": "tstt"
-                                                        }
-                                                    ],
-                                                    "allowEditOnly": true
-                                                },
-                                                "group": "General",
-                                                "displayName": "Start Page",
-                                                "name": "startPage",
-                                                "default": "8hda",
-                                                "index": 24
-                                            }
-                                        ],
-                                        "children": []
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            "metadata": {
-                "canvasPos": {
-                    "x": -259.772616985582,
-                    "y": -20.92658518068167
-                },
-                "canvasSize": {
-                    "width": "451px",
-                    "height": "809px"
-                }
-            }
-        },
-        {
-            "name": "/Components/Banner-Person",
+            "name": "/#Components/Banner-Person",
             "id": "b692c2b4-40d4-d59e-7c8d-a009411ec002",
             "graph": {
                 "connections": [
@@ -256,7 +89,8 @@
                             "marginBottom": {
                                 "value": 10,
                                 "unit": "px"
-                            }
+                            },
+                            "borderColor": "#798287"
                         },
                         "ports": [],
                         "dynamicports": [],
@@ -264,7 +98,9 @@
                             {
                                 "id": "c50d7762-a254-753a-11da-cd48a0ea8c0e",
                                 "type": "Text",
-                                "parameters": {},
+                                "parameters": {
+                                    "color": "#D3DCE1"
+                                },
                                 "ports": [],
                                 "dynamicports": [],
                                 "children": []
@@ -273,7 +109,9 @@
                                 "id": "05561612-bbb8-44bd-81e7-e61ed1cd2ee6",
                                 "type": "Text",
                                 "label": "birth_year",
-                                "parameters": {},
+                                "parameters": {
+                                    "color": "#D3DCE1"
+                                },
                                 "ports": [],
                                 "dynamicports": [],
                                 "children": []
@@ -303,8 +141,8 @@
             },
             "metadata": {
                 "canvasPos": {
-                    "x": 2189.5600222971916,
-                    "y": 1078.2773681437639
+                    "x": 3956.3189505467417,
+                    "y": 1292.6539745004038
                 },
                 "canvasSize": {
                     "width": "898px",
@@ -313,7 +151,7 @@
             }
         },
         {
-            "name": "/Components/Film",
+            "name": "/#Components/Card-Film",
             "id": "67ee7854-7df0-3681-1161-0cb45a2fe8a1",
             "graph": {
                 "connections": [
@@ -376,6 +214,30 @@
                         "fromProperty": "id",
                         "toId": "e403f813-6863-4fcc-624e-1b30f60098fd",
                         "toProperty": "id"
+                    },
+                    {
+                        "fromId": "48706366-8f1a-4851-0f13-b8df71a8e5f1",
+                        "fromProperty": "opening_crawl",
+                        "toId": "0b3b51f3-42bb-a30b-81f5-fc607f56bd4d",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "48706366-8f1a-4851-0f13-b8df71a8e5f1",
+                        "fromProperty": "title",
+                        "toId": "0d462563-b917-bfd5-cce3-6f52f7c2729d",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "48706366-8f1a-4851-0f13-b8df71a8e5f1",
+                        "fromProperty": "title",
+                        "toId": "770ee62f-09e7-af16-c75c-dc83126e92f3",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "c39dae27-7bd6-4a47-7fd4-a531735417fa",
+                        "fromProperty": "onClick",
+                        "toId": "e403f813-6863-4fcc-624e-1b30f60098fd",
+                        "toProperty": "Open Movie"
                     }
                 ],
                 "roots": [
@@ -439,8 +301,8 @@
                     {
                         "id": "e403f813-6863-4fcc-624e-1b30f60098fd",
                         "type": "Component Outputs",
-                        "x": 702,
-                        "y": 25,
+                        "x": 773.2338293042706,
+                        "y": 473.5092956194811,
                         "parameters": {},
                         "ports": [
                             {
@@ -488,27 +350,36 @@
                         "dynamicports": [],
                         "children": [
                             {
-                                "id": "bbcb17d8-90d6-6a95-d5af-ece25ef4d8f6",
+                                "id": "c39dae27-7bd6-4a47-7fd4-a531735417fa",
                                 "type": "Group",
+                                "label": "Item",
                                 "parameters": {
-                                    "backgroundColor": "#FFFFFF",
                                     "borderStyle": "solid",
+                                    "borderColor": "#798287",
                                     "borderWidth": {
-                                        "value": 1,
+                                        "value": 2,
                                         "unit": "px"
                                     },
+                                    "sizeMode": "contentHeight",
+                                    "paddingLeft": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    },
+                                    "paddingRight": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    },
+                                    "paddingTop": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    },
+                                    "paddingBottom": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    },
+                                    "backgroundColor": "#262626",
                                     "borderRadius": {
-                                        "value": 8,
-                                        "unit": "px"
-                                    },
-                                    "borderColor": "#E6E6E6",
-                                    "boxShadowEnabled": true,
-                                    "boxShadowSpreadRadius": {
-                                        "value": 0,
-                                        "unit": "px"
-                                    },
-                                    "boxShadowBlurRadius": {
-                                        "value": 5,
+                                        "value": 1,
                                         "unit": "px"
                                     }
                                 },
@@ -516,163 +387,87 @@
                                 "dynamicports": [],
                                 "children": [
                                     {
-                                        "id": "e4e709f3-94a6-6bcd-e058-dd825a8aba7c",
-                                        "type": "Group",
+                                        "id": "770ee62f-09e7-af16-c75c-dc83126e92f3",
+                                        "type": "Text",
                                         "parameters": {
-                                            "paddingTop": {
-                                                "value": 10,
+                                            "textTransform": "uppercase",
+                                            "text": "A New Hope",
+                                            "fontSize": {
+                                                "value": 8,
                                                 "unit": "px"
                                             },
-                                            "paddingRight": {
-                                                "value": 10,
+                                            "fontFamily": "Aurek-Besh.ttf",
+                                            "color": "#687474",
+                                            "marginBottom": {
+                                                "value": 5,
                                                 "unit": "px"
-                                            },
-                                            "paddingLeft": {
-                                                "value": 10,
-                                                "unit": "px"
-                                            },
-                                            "pointerEventsMode": "explicit"
+                                            }
                                         },
                                         "ports": [],
                                         "dynamicports": [],
-                                        "children": [
-                                            {
-                                                "id": "8c279e51-2dab-f4b0-3c58-410c08c573d1",
-                                                "type": "Text",
-                                                "label": "Title",
-                                                "parameters": {
-                                                    "marginLeft": {
-                                                        "value": 0,
-                                                        "unit": "px"
-                                                    },
-                                                    "marginBottom": {
-                                                        "value": 0,
-                                                        "unit": "px"
-                                                    },
-                                                    "marginRight": {
-                                                        "value": 0,
-                                                        "unit": "px"
-                                                    },
-                                                    "marginTop": {
-                                                        "value": 0,
-                                                        "unit": "px"
-                                                    },
-                                                    "text": "{title}",
-                                                    "fontFamily": "Tahoma",
-                                                    "fontSize": {
-                                                        "value": 24,
-                                                        "unit": "px"
-                                                    }
-                                                },
-                                                "ports": [],
-                                                "dynamicports": [],
-                                                "children": []
-                                            },
-                                            {
-                                                "id": "06d09ec4-bb4f-5a6b-3c98-0f9f6a75a94c",
-                                                "type": "Text",
-                                                "label": "Release date",
-                                                "parameters": {
-                                                    "fontFamily": "Lucida Console",
-                                                    "fontSize": {
-                                                        "value": 12,
-                                                        "unit": "px"
-                                                    },
-                                                    "marginTop": {
-                                                        "value": 10,
-                                                        "unit": "px"
-                                                    },
-                                                    "marginBottom": {
-                                                        "value": 10,
-                                                        "unit": "px"
-                                                    },
-                                                    "textTransform": "lowercase"
-                                                },
-                                                "ports": [],
-                                                "dynamicports": [],
-                                                "children": []
-                                            }
-                                        ]
+                                        "children": []
                                     },
                                     {
-                                        "id": "3230aba7-42c1-da78-a49e-2fb1a9b27453",
-                                        "type": "Group",
+                                        "id": "0d462563-b917-bfd5-cce3-6f52f7c2729d",
+                                        "type": "Text",
+                                        "label": "Title",
                                         "parameters": {
-                                            "paddingLeft": {
-                                                "value": 10,
+                                            "textTransform": "uppercase",
+                                            "text": "A New Hope",
+                                            "fontSize": {
+                                                "value": 32,
                                                 "unit": "px"
                                             },
-                                            "paddingRight": {
-                                                "value": 10,
-                                                "unit": "px"
-                                            },
-                                            "sizeMode": "explicit",
-                                            "paddingTop": {
-                                                "value": 10,
-                                                "unit": "px"
-                                            }
+                                            "color": "#D3DCE1",
+                                            "fontFamily": "Lucida Console"
                                         },
                                         "ports": [],
                                         "dynamicports": [],
-                                        "children": [
-                                            {
-                                                "id": "f68aff26-f127-7818-02c6-39accbdebf92",
-                                                "type": "Text",
-                                                "label": "Director",
-                                                "parameters": {},
-                                                "ports": [],
-                                                "dynamicports": [],
-                                                "children": []
-                                            },
-                                            {
-                                                "id": "071c2991-0d8e-5159-044b-f6f7d54b17ee",
-                                                "type": "Text",
-                                                "label": "Producer",
-                                                "parameters": {},
-                                                "ports": [],
-                                                "dynamicports": [],
-                                                "children": []
-                                            }
-                                        ]
+                                        "children": []
                                     },
                                     {
-                                        "id": "a125a402-b204-2a3b-c092-3edc4158d5b2",
+                                        "id": "9049d701-7851-f16d-278b-ea24f24112f1",
                                         "type": "Group",
+                                        "label": "Divider",
                                         "parameters": {
-                                            "paddingLeft": {
-                                                "value": 10,
+                                            "borderStyle": "solid",
+                                            "borderWidth": {
+                                                "value": 1,
                                                 "unit": "px"
                                             },
-                                            "paddingRight": {
+                                            "borderColor": "#687474",
+                                            "minWidth": {
                                                 "value": 10,
+                                                "unit": "%"
+                                            },
+                                            "maxWidth": {
+                                                "value": 10,
+                                                "unit": "%"
+                                            },
+                                            "marginTop": {
+                                                "value": 20,
                                                 "unit": "px"
                                             },
-                                            "paddingTop": {
+                                            "marginBottom": {
                                                 "value": 10,
                                                 "unit": "px"
-                                            },
-                                            "sizeMode": "contentHeight"
+                                            }
                                         },
                                         "ports": [],
                                         "dynamicports": [],
-                                        "children": [
-                                            {
-                                                "id": "8c646862-b3fb-59bd-5cd5-be1e233c50c1",
-                                                "type": "Text",
-                                                "label": "Description",
-                                                "parameters": {
-                                                    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean orci tortor, placerat sit amet porta a, hendrerit at leo. Pellentesque pretium ornare sem, ut faucibus ipsum auctor sit amet. Etiam eget luctus augue, vitae ornare magna. Fusce non quam augue. Vivamus sed tincidunt mauris, id finibus turpis. Cras vel elit feugiat sapien ornare vehicula. Suspendisse purus ante, sodales et aliquam sit amet, posuere non tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue neque in varius scelerisque. Donec dictum, justo non laoreet commodo, eros lectus condimentum tellus, ut iaculis nisi libero eu eros. Praesent posuere urna ut elementum laoreet. Cras non facilisis massa. Quisque arcu ex, efficitur in neque et, dictum porta nibh. Nulla ornare venenatis dictum. Aenean lectus tellus, auctor sed quam vestibulum, volutpat pulvinar sem.\n\nUt fermentum elementum luctus. Ut nec ex pretium, facilisis libero nec, feugiat nibh. Nunc eget congue sapien. Nullam sollicitudin quis erat a rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed ultrices non augue nec fringilla. Aliquam vitae malesuada ligula, sed hendrerit sem. Pellentesque a tempor erat. Vivamus semper a enim in viverra. Proin ut dignissim mi, vel mattis arcu. Praesent porta auctor leo, at sagittis ante tincidunt vitae. Duis id ligula tempus, pretium nisi ac, elementum risus.",
-                                                    "maxHeight": {
-                                                        "value": 150,
-                                                        "unit": "px"
-                                                    },
-                                                    "style": "/* example:\n{\n\tbackgroundColor: 'red'\n}\n*/\n\n{\n    overflow: 'hidden'\n}\n"
-                                                },
-                                                "ports": [],
-                                                "dynamicports": [],
-                                                "children": []
-                                            }
-                                        ]
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "0b3b51f3-42bb-a30b-81f5-fc607f56bd4d",
+                                        "type": "Text",
+                                        "label": "Opening",
+                                        "parameters": {
+                                            "text": "It is a period of civil war.\\r\\nRebel spaceships, striking\\r\\nfrom a hidden base, have won\\r\\ntheir first victory against\\r\\nthe evil Galactic Empire.\\r\\n\\r\\nDuring the battle, Rebel\\r\\nspies managed to steal secret\\r\\nplans to the Empire's\\r\\nultimate weapon, the DEATH\\r\\nSTAR, an armored space\\r\\nstation with enough power\\r\\nto destroy an entire planet.\\r\\n\\r\\nPursued by the Empire's\\r\\nsinister agents, Princess\\r\\nLeia races home aboard her\\r\\nstarship, custodian of the\\r\\nstolen plans that can save her\\r\\npeople and restore\\r\\nfreedom to the galaxy....\n",
+                                            "color": "#D3DCE1"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
                                     }
                                 ]
                             }
@@ -682,8 +477,8 @@
                         "id": "e436fdf6-336b-3c27-c2e0-8d3719c8c805",
                         "type": "String Format",
                         "label": "String Format",
-                        "x": 92.4710531934877,
-                        "y": 287.54583064751705,
+                        "x": 865.4900156435347,
+                        "y": 976.1395139221324,
                         "parameters": {
                             "format": "Released {release_date}"
                         },
@@ -702,8 +497,8 @@
                         "id": "d2a51172-d2ee-dc37-7cf3-e240bfc7a439",
                         "type": "String Format",
                         "label": "String Format",
-                        "x": 88.86263988690052,
-                        "y": 398.20383871620055,
+                        "x": 861.8816023369475,
+                        "y": 1086.7975219908155,
                         "parameters": {
                             "format": "Director: {director}"
                         },
@@ -722,8 +517,8 @@
                         "id": "42741222-596e-78ee-23bc-41af1ed6f8c8",
                         "type": "String Format",
                         "label": "String Format",
-                        "x": 87.65983545137124,
-                        "y": 488.41417138088826,
+                        "x": 860.6787979014182,
+                        "y": 1177.0078546555048,
                         "parameters": {
                             "format": "Producers: {producer}"
                         },
@@ -737,13 +532,178 @@
                             }
                         ],
                         "children": []
+                    },
+                    {
+                        "id": "e4e709f3-94a6-6bcd-e058-dd825a8aba7c",
+                        "type": "Group",
+                        "x": 1080.210412321208,
+                        "y": 778.0405233776863,
+                        "parameters": {
+                            "paddingTop": {
+                                "value": 10,
+                                "unit": "px"
+                            },
+                            "paddingRight": {
+                                "value": 10,
+                                "unit": "px"
+                            },
+                            "paddingLeft": {
+                                "value": 10,
+                                "unit": "px"
+                            },
+                            "pointerEventsMode": "explicit"
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "8c279e51-2dab-f4b0-3c58-410c08c573d1",
+                                "type": "Text",
+                                "label": "Title",
+                                "parameters": {
+                                    "marginLeft": {
+                                        "value": 0,
+                                        "unit": "px"
+                                    },
+                                    "marginBottom": {
+                                        "value": 0,
+                                        "unit": "px"
+                                    },
+                                    "marginRight": {
+                                        "value": 0,
+                                        "unit": "px"
+                                    },
+                                    "marginTop": {
+                                        "value": 0,
+                                        "unit": "px"
+                                    },
+                                    "text": "{title}",
+                                    "fontFamily": "Tahoma",
+                                    "fontSize": {
+                                        "value": 24,
+                                        "unit": "px"
+                                    }
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "06d09ec4-bb4f-5a6b-3c98-0f9f6a75a94c",
+                                "type": "Text",
+                                "label": "Release date",
+                                "parameters": {
+                                    "fontFamily": "Lucida Console",
+                                    "fontSize": {
+                                        "value": 12,
+                                        "unit": "px"
+                                    },
+                                    "marginTop": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "marginBottom": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "textTransform": "lowercase"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "3230aba7-42c1-da78-a49e-2fb1a9b27453",
+                        "type": "Group",
+                        "x": 1080.210412321208,
+                        "y": 1050.0405233776862,
+                        "parameters": {
+                            "paddingLeft": {
+                                "value": 10,
+                                "unit": "px"
+                            },
+                            "paddingRight": {
+                                "value": 10,
+                                "unit": "px"
+                            },
+                            "sizeMode": "explicit",
+                            "paddingTop": {
+                                "value": 10,
+                                "unit": "px"
+                            }
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "f68aff26-f127-7818-02c6-39accbdebf92",
+                                "type": "Text",
+                                "label": "Director",
+                                "parameters": {},
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "071c2991-0d8e-5159-044b-f6f7d54b17ee",
+                                "type": "Text",
+                                "label": "Producer",
+                                "parameters": {},
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "a125a402-b204-2a3b-c092-3edc4158d5b2",
+                        "type": "Group",
+                        "x": 1080.210412321208,
+                        "y": 1286.0405233776878,
+                        "parameters": {
+                            "paddingLeft": {
+                                "value": 10,
+                                "unit": "px"
+                            },
+                            "paddingRight": {
+                                "value": 10,
+                                "unit": "px"
+                            },
+                            "paddingTop": {
+                                "value": 10,
+                                "unit": "px"
+                            },
+                            "sizeMode": "contentHeight"
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "8c646862-b3fb-59bd-5cd5-be1e233c50c1",
+                                "type": "Text",
+                                "label": "Description",
+                                "parameters": {
+                                    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean orci tortor, placerat sit amet porta a, hendrerit at leo. Pellentesque pretium ornare sem, ut faucibus ipsum auctor sit amet. Etiam eget luctus augue, vitae ornare magna. Fusce non quam augue. Vivamus sed tincidunt mauris, id finibus turpis. Cras vel elit feugiat sapien ornare vehicula. Suspendisse purus ante, sodales et aliquam sit amet, posuere non tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue neque in varius scelerisque. Donec dictum, justo non laoreet commodo, eros lectus condimentum tellus, ut iaculis nisi libero eu eros. Praesent posuere urna ut elementum laoreet. Cras non facilisis massa. Quisque arcu ex, efficitur in neque et, dictum porta nibh. Nulla ornare venenatis dictum. Aenean lectus tellus, auctor sed quam vestibulum, volutpat pulvinar sem.\n\nUt fermentum elementum luctus. Ut nec ex pretium, facilisis libero nec, feugiat nibh. Nunc eget congue sapien. Nullam sollicitudin quis erat a rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed ultrices non augue nec fringilla. Aliquam vitae malesuada ligula, sed hendrerit sem. Pellentesque a tempor erat. Vivamus semper a enim in viverra. Proin ut dignissim mi, vel mattis arcu. Praesent porta auctor leo, at sagittis ante tincidunt vitae. Duis id ligula tempus, pretium nisi ac, elementum risus.",
+                                    "maxHeight": {
+                                        "value": 150,
+                                        "unit": "px"
+                                    },
+                                    "style": "/* example:\n{\n\tbackgroundColor: 'red'\n}\n*/\n\n{\n    overflow: 'hidden'\n}\n"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            }
+                        ]
                     }
                 ]
             },
             "metadata": {
                 "canvasPos": {
-                    "x": 1487.3931213799158,
-                    "y": 908.2812558697849
+                    "x": 3773.4467061883483,
+                    "y": 477.8540374844479
                 },
                 "canvasSize": {
                     "width": "529px",
@@ -752,16 +712,639 @@
             }
         },
         {
-            "name": "/Pages/Film",
-            "id": "a61e79cc-cbe0-9bf0-5548-afdcf15ad41b",
+            "name": "/#Components/MenuItem",
+            "id": "d1b94eb6-a9c1-de4e-4853-89d565ee5652",
             "graph": {
                 "connections": [
                     {
-                        "fromId": "14702884-c0e2-1a96-1c8f-c381f14d8967",
-                        "fromProperty": "onClick",
-                        "toId": "5796218a-3bb1-5241-dc8f-b40f75b0a090",
-                        "toProperty": "navigate"
+                        "fromId": "76a50386-7f4e-7f6b-eae9-097ebb8cfaf5",
+                        "fromProperty": "Text",
+                        "toId": "3edbbfaa-15c8-4384-6f0e-49d735a5b3a2",
+                        "toProperty": "text"
                     },
+                    {
+                        "fromId": "76a50386-7f4e-7f6b-eae9-097ebb8cfaf5",
+                        "fromProperty": "Text",
+                        "toId": "0d9567dc-3910-eb5c-d810-f5da7cc8d3fd",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "0255c565-44b6-02ba-8ac2-10f47c94b027",
+                        "fromProperty": "onClick",
+                        "toId": "9b018f91-46da-23d9-e52d-26e85f4e05a8",
+                        "toProperty": "Click"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "76a50386-7f4e-7f6b-eae9-097ebb8cfaf5",
+                        "type": "Component Inputs",
+                        "x": -204,
+                        "y": -41,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "Text",
+                                "plug": "output",
+                                "type": "*",
+                                "index": 0
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "9b018f91-46da-23d9-e52d-26e85f4e05a8",
+                        "type": "Component Outputs",
+                        "x": 757,
+                        "y": -38,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "Click",
+                                "plug": "input",
+                                "type": "*",
+                                "index": 0
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "0255c565-44b6-02ba-8ac2-10f47c94b027",
+                        "type": "Group",
+                        "label": "Item",
+                        "x": 273,
+                        "y": -83.33333333333331,
+                        "parameters": {
+                            "borderStyle": "solid",
+                            "borderColor": "#798287",
+                            "borderWidth": {
+                                "value": 2,
+                                "unit": "px"
+                            },
+                            "sizeMode": "contentHeight",
+                            "paddingLeft": {
+                                "value": 20,
+                                "unit": "px"
+                            },
+                            "paddingRight": {
+                                "value": 20,
+                                "unit": "px"
+                            },
+                            "paddingTop": {
+                                "value": 20,
+                                "unit": "px"
+                            },
+                            "paddingBottom": {
+                                "value": 20,
+                                "unit": "px"
+                            },
+                            "backgroundColor": "#262626",
+                            "borderRadius": {
+                                "value": 1,
+                                "unit": "px"
+                            }
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "3edbbfaa-15c8-4384-6f0e-49d735a5b3a2",
+                                "type": "Text",
+                                "parameters": {
+                                    "textTransform": "uppercase",
+                                    "text": "Movies",
+                                    "fontSize": {
+                                        "value": 8,
+                                        "unit": "px"
+                                    },
+                                    "fontFamily": "Aurek-Besh.ttf",
+                                    "color": "#687474",
+                                    "marginBottom": {
+                                        "value": 5,
+                                        "unit": "px"
+                                    }
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "0d9567dc-3910-eb5c-d810-f5da7cc8d3fd",
+                                "type": "Text",
+                                "label": "Title",
+                                "parameters": {
+                                    "textTransform": "uppercase",
+                                    "text": "Movies",
+                                    "fontSize": {
+                                        "value": 32,
+                                        "unit": "px"
+                                    },
+                                    "color": "#D3DCE1",
+                                    "fontFamily": "Lucida Console"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "dfee7dbf-f1d0-1b9d-8f2a-b09735b2679e",
+                                "type": "Group",
+                                "label": "Divider",
+                                "parameters": {
+                                    "borderStyle": "solid",
+                                    "borderWidth": {
+                                        "value": 1,
+                                        "unit": "px"
+                                    },
+                                    "borderColor": "#687474",
+                                    "minWidth": {
+                                        "value": 10,
+                                        "unit": "%"
+                                    },
+                                    "maxWidth": {
+                                        "value": 10,
+                                        "unit": "%"
+                                    },
+                                    "marginTop": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    },
+                                    "marginBottom": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    }
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            "metadata": {
+                "canvasPos": {
+                    "x": -258,
+                    "y": 477.8540374844479
+                }
+            }
+        },
+        {
+            "name": "/App",
+            "id": "943e3099-c191-ebb4-e366-f9b7e52d764a",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "e214c852-8da0-faf9-0af7-c880c37d680f",
+                        "fromProperty": "onClick",
+                        "toId": "53fd2e5b-3b35-1658-ed1c-b4663b79c668",
+                        "toProperty": "navigate"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "255536ef-af4c-d3c4-24dd-6f86e106b34d",
+                        "type": "Group",
+                        "label": "App",
+                        "x": 302,
+                        "y": -39,
+                        "parameters": {
+                            "scrollEnabled": false,
+                            "backgroundColor": "#000000"
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "e214c852-8da0-faf9-0af7-c880c37d680f",
+                                "type": "Group",
+                                "label": "Navigation",
+                                "parameters": {
+                                    "sizeMode": "contentHeight",
+                                    "minHeight": {
+                                        "value": 64,
+                                        "unit": "px"
+                                    },
+                                    "borderStyle": "solid"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "edea8f05-7b10-d94f-750c-9e1a5bfded33",
+                                        "type": "Image",
+                                        "parameters": {
+                                            "src": "logo.png",
+                                            "sizeMode": "contentHeight",
+                                            "maxHeight": {
+                                                "value": 50,
+                                                "unit": "px"
+                                            },
+                                            "width": {
+                                                "value": 100,
+                                                "unit": "%",
+                                                "isFixed": false
+                                            }
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "8b719c10-8b1d-8ddd-a95c-3651ca5cbf5b",
+                                "type": "Group",
+                                "label": "Container",
+                                "parameters": {
+                                    "scrollEnabled": true
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "927d0380-69b8-5fa0-81ee-51f664bb8028",
+                                        "type": "Page Stack",
+                                        "parameters": {
+                                            "useRoutes": true,
+                                            "pages": [
+                                                {
+                                                    "id": "8hda",
+                                                    "label": "Films"
+                                                },
+                                                {
+                                                    "id": "tstt",
+                                                    "label": "Film"
+                                                },
+                                                {
+                                                    "id": "q3ku",
+                                                    "label": "Home"
+                                                },
+                                                {
+                                                    "id": "zskx",
+                                                    "label": "Planets"
+                                                },
+                                                {
+                                                    "id": "iugk",
+                                                    "label": "Planet"
+                                                },
+                                                {
+                                                    "id": "u7bz",
+                                                    "label": "Characters"
+                                                },
+                                                {
+                                                    "id": "ois4",
+                                                    "label": "Character"
+                                                }
+                                            ],
+                                            "pageComp-8hda": "/Films/Index",
+                                            "pageComp-tstt": "/Films/_id/Index",
+                                            "pagePath-tstt": "films/{id}",
+                                            "pageComp-q3ku": "/Home",
+                                            "pagePath-q3ku": "",
+                                            "startPage": "q3ku",
+                                            "pageComp-zskx": "/Planets/Index",
+                                            "pagePath-iugk": "planets/{id}",
+                                            "pageComp-iugk": "/Films/_id/Index",
+                                            "pagePath-u7bz": "characters",
+                                            "pageComp-u7bz": "/Characters/Index",
+                                            "pagePath-ois4": "characters/{id}",
+                                            "pageComp-ois4": "/Characters/_id/Index"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [
+                                            {
+                                                "name": "pageComp-8hda",
+                                                "displayName": "Component",
+                                                "editorName": "Films | Component",
+                                                "plug": "input",
+                                                "type": "component",
+                                                "parent": "pages",
+                                                "parentItemId": "8hda",
+                                                "index": 20
+                                            },
+                                            {
+                                                "name": "pagePath-8hda",
+                                                "displayName": "Path",
+                                                "editorName": "Films | Path",
+                                                "plug": "input",
+                                                "type": "string",
+                                                "default": "films",
+                                                "parent": "pages",
+                                                "parentItemId": "8hda",
+                                                "index": 21
+                                            },
+                                            {
+                                                "name": "pageComp-tstt",
+                                                "displayName": "Component",
+                                                "editorName": "Film | Component",
+                                                "plug": "input",
+                                                "type": "component",
+                                                "parent": "pages",
+                                                "parentItemId": "tstt",
+                                                "index": 22
+                                            },
+                                            {
+                                                "name": "pagePath-tstt",
+                                                "displayName": "Path",
+                                                "editorName": "Film | Path",
+                                                "plug": "input",
+                                                "type": "string",
+                                                "default": "film",
+                                                "parent": "pages",
+                                                "parentItemId": "tstt",
+                                                "index": 23
+                                            },
+                                            {
+                                                "name": "pageComp-q3ku",
+                                                "displayName": "Component",
+                                                "editorName": "Home | Component",
+                                                "plug": "input",
+                                                "type": "component",
+                                                "parent": "pages",
+                                                "parentItemId": "q3ku",
+                                                "index": 24
+                                            },
+                                            {
+                                                "name": "pagePath-q3ku",
+                                                "displayName": "Path",
+                                                "editorName": "Home | Path",
+                                                "plug": "input",
+                                                "type": "string",
+                                                "default": "home",
+                                                "parent": "pages",
+                                                "parentItemId": "q3ku",
+                                                "index": 25
+                                            },
+                                            {
+                                                "name": "pageComp-zskx",
+                                                "displayName": "Component",
+                                                "editorName": "Planets | Component",
+                                                "plug": "input",
+                                                "type": "component",
+                                                "parent": "pages",
+                                                "parentItemId": "zskx",
+                                                "index": 26
+                                            },
+                                            {
+                                                "name": "pagePath-zskx",
+                                                "displayName": "Path",
+                                                "editorName": "Planets | Path",
+                                                "plug": "input",
+                                                "type": "string",
+                                                "default": "planets",
+                                                "parent": "pages",
+                                                "parentItemId": "zskx",
+                                                "index": 27
+                                            },
+                                            {
+                                                "name": "pageComp-iugk",
+                                                "displayName": "Component",
+                                                "editorName": "Planet | Component",
+                                                "plug": "input",
+                                                "type": "component",
+                                                "parent": "pages",
+                                                "parentItemId": "iugk",
+                                                "index": 28
+                                            },
+                                            {
+                                                "name": "pagePath-iugk",
+                                                "displayName": "Path",
+                                                "editorName": "Planet | Path",
+                                                "plug": "input",
+                                                "type": "string",
+                                                "default": "planet",
+                                                "parent": "pages",
+                                                "parentItemId": "iugk",
+                                                "index": 29
+                                            },
+                                            {
+                                                "name": "pageComp-u7bz",
+                                                "displayName": "Component",
+                                                "editorName": "Characters | Component",
+                                                "plug": "input",
+                                                "type": "component",
+                                                "parent": "pages",
+                                                "parentItemId": "u7bz",
+                                                "index": 30
+                                            },
+                                            {
+                                                "name": "pagePath-u7bz",
+                                                "displayName": "Path",
+                                                "editorName": "Characters | Path",
+                                                "plug": "input",
+                                                "type": "string",
+                                                "default": "characters",
+                                                "parent": "pages",
+                                                "parentItemId": "u7bz",
+                                                "index": 31
+                                            },
+                                            {
+                                                "name": "pageComp-ois4",
+                                                "displayName": "Component",
+                                                "editorName": "Character | Component",
+                                                "plug": "input",
+                                                "type": "component",
+                                                "parent": "pages",
+                                                "parentItemId": "ois4",
+                                                "index": 32
+                                            },
+                                            {
+                                                "name": "pagePath-ois4",
+                                                "displayName": "Path",
+                                                "editorName": "Character | Path",
+                                                "plug": "input",
+                                                "type": "string",
+                                                "default": "character",
+                                                "parent": "pages",
+                                                "parentItemId": "ois4",
+                                                "index": 33
+                                            },
+                                            {
+                                                "plug": "input",
+                                                "type": {
+                                                    "name": "enum",
+                                                    "enums": [
+                                                        {
+                                                            "label": "Films",
+                                                            "value": "8hda"
+                                                        },
+                                                        {
+                                                            "label": "Film",
+                                                            "value": "tstt"
+                                                        },
+                                                        {
+                                                            "label": "Home",
+                                                            "value": "q3ku"
+                                                        },
+                                                        {
+                                                            "label": "Planets",
+                                                            "value": "zskx"
+                                                        },
+                                                        {
+                                                            "label": "Planet",
+                                                            "value": "iugk"
+                                                        },
+                                                        {
+                                                            "label": "Characters",
+                                                            "value": "u7bz"
+                                                        },
+                                                        {
+                                                            "label": "Character",
+                                                            "value": "ois4"
+                                                        }
+                                                    ],
+                                                    "allowEditOnly": true
+                                                },
+                                                "group": "General",
+                                                "displayName": "Start Page",
+                                                "name": "startPage",
+                                                "default": "8hda",
+                                                "index": 34
+                                            }
+                                        ],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "53fd2e5b-3b35-1658-ed1c-b4663b79c668",
+                        "type": "PageStackNavigate",
+                        "x": 612,
+                        "y": 18.166666666666686,
+                        "parameters": {
+                            "target": "q3ku",
+                            "tr-darkoverlay": false,
+                            "tr-crossfade": true,
+                            "mode": "replace"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        {
+                                            "label": "Films",
+                                            "value": "8hda"
+                                        },
+                                        {
+                                            "label": "Film",
+                                            "value": "tstt"
+                                        },
+                                        {
+                                            "label": "Home",
+                                            "value": "q3ku"
+                                        },
+                                        {
+                                            "label": "Planets",
+                                            "value": "zskx"
+                                        },
+                                        {
+                                            "label": "Planet",
+                                            "value": "iugk"
+                                        },
+                                        {
+                                            "label": "Characters",
+                                            "value": "u7bz"
+                                        },
+                                        {
+                                            "label": "Character",
+                                            "value": "ois4"
+                                        }
+                                    ],
+                                    "allowEditOnly": true
+                                },
+                                "group": "General",
+                                "displayName": "Target Page",
+                                "name": "target",
+                                "default": "8hda",
+                                "index": 4
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            },
+            "metadata": {
+                "canvasPos": {
+                    "x": -259.772616985582,
+                    "y": -22.005819941563264
+                },
+                "canvasSize": {
+                    "width": "556px",
+                    "height": "782px"
+                }
+            }
+        },
+        {
+            "name": "/Characters/_id/Index",
+            "id": "d67aabdb-58ce-672b-2a27-3f55bdf18451",
+            "graph": {
+                "connections": [],
+                "roots": [
+                    {
+                        "id": "cd971dcc-bd43-0cfd-06bc-f70f6caa3e0a",
+                        "type": "Group",
+                        "x": 0,
+                        "y": 0,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    }
+                ]
+            },
+            "metadata": {
+                "canvasPos": {
+                    "x": 9312.581751300197,
+                    "y": -117.71743182101957
+                },
+                "canvasSize": {
+                    "width": "515px",
+                    "height": "885px"
+                }
+            }
+        },
+        {
+            "name": "/Characters/Index",
+            "id": "aafb7168-6f1a-e7ae-58e6-de9b8a8d5f33",
+            "graph": {
+                "connections": [],
+                "roots": [
+                    {
+                        "id": "d554b733-875c-4bc2-3713-3b4f8ec3df60",
+                        "type": "Group",
+                        "x": 0,
+                        "y": 0,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    }
+                ]
+            },
+            "metadata": {
+                "canvasPos": {
+                    "x": 8652.58172063598,
+                    "y": -87.71741884060046
+                },
+                "canvasSize": {
+                    "width": "515px",
+                    "height": "835px"
+                }
+            }
+        },
+        {
+            "name": "/Films/_id/Index",
+            "id": "a61e79cc-cbe0-9bf0-5548-afdcf15ad41b",
+            "graph": {
+                "connections": [
                     {
                         "fromId": "24f372d6-56c0-0aa2-a86f-3861aef77221",
                         "fromProperty": "id",
@@ -839,6 +1422,18 @@
                         "fromProperty": "items",
                         "toId": "142e5044-39cb-7d1c-65eb-6f0a5674e8fd",
                         "toProperty": "items"
+                    },
+                    {
+                        "fromId": "4b24cb2a-30d2-9513-0ab2-02aa706c6c33",
+                        "fromProperty": "Results",
+                        "toId": "d075b51f-a2ba-edbd-b843-8bffbb281687",
+                        "toProperty": "Message"
+                    },
+                    {
+                        "fromId": "4b24cb2a-30d2-9513-0ab2-02aa706c6c33",
+                        "fromProperty": "Fetched",
+                        "toId": "d075b51f-a2ba-edbd-b843-8bffbb281687",
+                        "toProperty": "LogMessage"
                     }
                 ],
                 "roots": [
@@ -852,46 +1447,6 @@
                         "ports": [],
                         "dynamicports": [],
                         "children": [
-                            {
-                                "id": "e1f0bf51-6d87-0cb3-d7d0-6118516aba11",
-                                "type": "Group",
-                                "parameters": {
-                                    "scrollEnabled": true,
-                                    "paddingTop": {
-                                        "value": 20,
-                                        "unit": "px"
-                                    },
-                                    "paddingBottom": {
-                                        "value": 20,
-                                        "unit": "px"
-                                    },
-                                    "paddingLeft": {
-                                        "value": 20,
-                                        "unit": "px"
-                                    },
-                                    "paddingRight": {
-                                        "value": 20,
-                                        "unit": "px"
-                                    },
-                                    "sizeMode": "contentHeight"
-                                },
-                                "ports": [],
-                                "dynamicports": [],
-                                "children": [
-                                    {
-                                        "id": "14702884-c0e2-1a96-1c8f-c381f14d8967",
-                                        "type": "Button",
-                                        "label": "Go Back",
-                                        "parameters": {
-                                            "sizeMode": "contentHeight",
-                                            "label": "Back"
-                                        },
-                                        "ports": [],
-                                        "dynamicports": [],
-                                        "children": []
-                                    }
-                                ]
-                            },
                             {
                                 "id": "9adbe4d1-4211-96ca-9127-b84e47a80990",
                                 "type": "Group",
@@ -926,7 +1481,8 @@
                                             "fontSize": {
                                                 "value": 32,
                                                 "unit": "px"
-                                            }
+                                            },
+                                            "color": "#D3DCE1"
                                         },
                                         "ports": [],
                                         "dynamicports": [],
@@ -950,7 +1506,8 @@
                                                 "value": 10,
                                                 "unit": "px"
                                             },
-                                            "textTransform": "lowercase"
+                                            "textTransform": "lowercase",
+                                            "color": "#D3DCE1"
                                         },
                                         "ports": [],
                                         "dynamicports": [],
@@ -983,7 +1540,9 @@
                                         "id": "e309f026-0b43-29a1-3ba7-fbf645a9f729",
                                         "type": "Text",
                                         "label": "Director",
-                                        "parameters": {},
+                                        "parameters": {
+                                            "color": "#D3DCE1"
+                                        },
                                         "ports": [],
                                         "dynamicports": [],
                                         "children": []
@@ -992,7 +1551,9 @@
                                         "id": "fb2acb57-9d65-7e0e-aa38-8c4ce3ee24f1",
                                         "type": "Text",
                                         "label": "Producer",
-                                        "parameters": {},
+                                        "parameters": {
+                                            "color": "#D3DCE1"
+                                        },
                                         "ports": [],
                                         "dynamicports": [],
                                         "children": []
@@ -1026,7 +1587,8 @@
                                         "label": "Description",
                                         "parameters": {
                                             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean orci tortor, placerat sit amet porta a, hendrerit at leo. Pellentesque pretium ornare sem, ut faucibus ipsum auctor sit amet. Etiam eget luctus augue, vitae ornare magna. Fusce non quam augue. Vivamus sed tincidunt mauris, id finibus turpis. Cras vel elit feugiat sapien ornare vehicula. Suspendisse purus ante, sodales et aliquam sit amet, posuere non tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue neque in varius scelerisque. Donec dictum, justo non laoreet commodo, eros lectus condimentum tellus, ut iaculis nisi libero eu eros. Praesent posuere urna ut elementum laoreet. Cras non facilisis massa. Quisque arcu ex, efficitur in neque et, dictum porta nibh. Nulla ornare venenatis dictum. Aenean lectus tellus, auctor sed quam vestibulum, volutpat pulvinar sem.\n\nUt fermentum elementum luctus. Ut nec ex pretium, facilisis libero nec, feugiat nibh. Nunc eget congue sapien. Nullam sollicitudin quis erat a rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed ultrices non augue nec fringilla. Aliquam vitae malesuada ligula, sed hendrerit sem. Pellentesque a tempor erat. Vivamus semper a enim in viverra. Proin ut dignissim mi, vel mattis arcu. Praesent porta auctor leo, at sagittis ante tincidunt vitae. Duis id ligula tempus, pretium nisi ac, elementum risus.",
-                                            "style": "/* example:\n{\n\tbackgroundColor: 'red'\n}\n*/\n\n{\n    overflow: 'hidden'\n}\n"
+                                            "style": "/* example:\n{\n\tbackgroundColor: 'red'\n}\n*/\n\n{\n    overflow: 'hidden'\n}\n",
+                                            "color": "#D3DCE1"
                                         },
                                         "ports": [],
                                         "dynamicports": [],
@@ -1068,7 +1630,8 @@
                                                 "value": 20,
                                                 "unit": "px"
                                             },
-                                            "textAlignX": "center"
+                                            "textAlignX": "center",
+                                            "color": "#D3DCE1"
                                         },
                                         "ports": [],
                                         "dynamicports": [],
@@ -1078,7 +1641,7 @@
                                         "id": "142e5044-39cb-7d1c-65eb-6f0a5674e8fd",
                                         "type": "For Each",
                                         "parameters": {
-                                            "template": "/Components/Banner-Person"
+                                            "template": "/#Components/Banner-Person"
                                         },
                                         "ports": [],
                                         "dynamicports": [
@@ -1118,16 +1681,6 @@
                         ]
                     },
                     {
-                        "id": "5796218a-3bb1-5241-dc8f-b40f75b0a090",
-                        "type": "PageStackNavigateBack",
-                        "x": 613.9191824356782,
-                        "y": 69.12567676591277,
-                        "parameters": {},
-                        "ports": [],
-                        "dynamicports": [],
-                        "children": []
-                    },
-                    {
                         "id": "24f372d6-56c0-0aa2-a86f-3861aef77221",
                         "type": "Component Inputs",
                         "x": -1146.5335433934288,
@@ -1160,8 +1713,8 @@
                         "id": "5f6aed24-6547-a37d-7af2-4d5e16c4d172",
                         "type": "String Format",
                         "label": "String Format",
-                        "x": 126.02514810175649,
-                        "y": 330.7108528684151,
+                        "x": 61.073708583181315,
+                        "y": 204.4163871378524,
                         "parameters": {
                             "format": "Released {release_date}"
                         },
@@ -1180,8 +1733,8 @@
                         "id": "be97d90f-9f63-8c61-95cb-4db6dfdb864b",
                         "type": "String Format",
                         "label": "String Format",
-                        "x": 122.4167347951693,
-                        "y": 441.3688609370986,
+                        "x": 57.465295276594134,
+                        "y": 315.07439520653577,
                         "parameters": {
                             "format": "Director: {director}"
                         },
@@ -1200,8 +1753,8 @@
                         "id": "80a30b41-2aec-d43c-ae08-388558711a27",
                         "type": "String Format",
                         "label": "String Format",
-                        "x": 121.21393035964002,
-                        "y": 531.5791936017865,
+                        "x": 56.262490841064846,
+                        "y": 405.2847278712237,
                         "parameters": {
                             "format": "Producers: {producer}"
                         },
@@ -1344,13 +1897,23 @@
                             }
                         ],
                         "children": []
+                    },
+                    {
+                        "id": "d075b51f-a2ba-edbd-b843-8bffbb281687",
+                        "type": "Log",
+                        "x": -567.8379395522799,
+                        "y": 479.4801480951471,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
                     }
                 ]
             },
             "metadata": {
                 "canvasPos": {
-                    "x": 2210.7127573744738,
-                    "y": -97.73831947839045
+                    "x": 3283.9309851148373,
+                    "y": -15.634192766013086
                 },
                 "canvasSize": {
                     "width": "543px",
@@ -1359,7 +1922,7 @@
             }
         },
         {
-            "name": "/Pages/Films",
+            "name": "/Films/Index",
             "id": "79f5249b-fb1d-ac42-b110-f50c2fcfe859",
             "graph": {
                 "connections": [
@@ -1494,7 +2057,7 @@
                                         "type": "For Each",
                                         "label": "Films",
                                         "parameters": {
-                                            "template": "/Components/Film"
+                                            "template": "/#Components/Card-Film"
                                         },
                                         "ports": [],
                                         "dynamicports": [
@@ -1774,6 +2337,26 @@
                                         {
                                             "label": "Film",
                                             "value": "tstt"
+                                        },
+                                        {
+                                            "label": "Home",
+                                            "value": "q3ku"
+                                        },
+                                        {
+                                            "label": "Planets",
+                                            "value": "zskx"
+                                        },
+                                        {
+                                            "label": "Planet",
+                                            "value": "iugk"
+                                        },
+                                        {
+                                            "label": "Characters",
+                                            "value": "u7bz"
+                                        },
+                                        {
+                                            "label": "Character",
+                                            "value": "ois4"
                                         }
                                     ],
                                     "allowEditOnly": true
@@ -1799,12 +2382,678 @@
             },
             "metadata": {
                 "canvasPos": {
-                    "x": 1489.716445112555,
-                    "y": -67.69169714390425
+                    "x": 2603.9867362091054,
+                    "y": 32.00617100683971
                 },
                 "canvasSize": {
                     "width": "527px",
                     "height": "781px"
+                }
+            }
+        },
+        {
+            "name": "/Home",
+            "id": "cf7fb42f-1b8e-d1c1-5bde-2b0edbe32e19",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "d55f429b-629d-5228-98f8-6c293e1021df",
+                        "fromProperty": "Click",
+                        "toId": "40af3294-55ed-ae30-bbe5-9facf84f9b79",
+                        "toProperty": "navigate"
+                    },
+                    {
+                        "fromId": "cbe9460b-71bd-d558-9965-1b5ac69b8b03",
+                        "fromProperty": "Click",
+                        "toId": "9ad7ed9c-e6f5-5985-9d97-8df1e2bbc7be",
+                        "toProperty": "navigate"
+                    },
+                    {
+                        "fromId": "822e0ef1-f48b-4970-9db8-9bf2184d87b3",
+                        "fromProperty": "Click",
+                        "toId": "919d6c21-27e7-e23f-3b73-5ddba6bb659b",
+                        "toProperty": "navigate"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "192961c2-6fc5-e4d7-5c43-857990605c04",
+                        "type": "Group",
+                        "x": 0,
+                        "y": 0,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "9a4cf2b7-1e5b-35b1-9473-a5ff7cf72c2a",
+                                "type": "Text",
+                                "label": "Main Menu",
+                                "parameters": {
+                                    "text": "Main Menu",
+                                    "color": "#D3DCE1",
+                                    "textAlignX": "center",
+                                    "fontFamily": "Tahoma",
+                                    "fontSize": {
+                                        "value": 36,
+                                        "unit": "px"
+                                    },
+                                    "marginTop": {
+                                        "value": 30,
+                                        "unit": "px"
+                                    },
+                                    "marginBottom": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    }
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "2b5a5b71-00b3-5a63-cf5c-e5d9d775bd22",
+                                "type": "Auto Layout",
+                                "label": "Menu",
+                                "parameters": {
+                                    "gap": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "mounted": true,
+                                    "padding": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "columns": 2
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "d55f429b-629d-5228-98f8-6c293e1021df",
+                                        "type": "/#Components/MenuItem",
+                                        "label": "Movies",
+                                        "parameters": {
+                                            "Text": "Movies"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "cbe9460b-71bd-d558-9965-1b5ac69b8b03",
+                                        "type": "/#Components/MenuItem",
+                                        "label": "Planets",
+                                        "parameters": {
+                                            "Text": "Planets"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "822e0ef1-f48b-4970-9db8-9bf2184d87b3",
+                                        "type": "/#Components/MenuItem",
+                                        "label": "Characters",
+                                        "parameters": {
+                                            "Text": "Characters"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "91e7d8b5-e82e-6270-8ed9-abea207ed848",
+                                        "type": "/#Components/MenuItem",
+                                        "label": "Starships",
+                                        "parameters": {
+                                            "Text": "Starships"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "23138439-6a2a-a530-a926-6ba56a9b5ec5",
+                                        "type": "/#Components/MenuItem",
+                                        "label": "Vehicles",
+                                        "parameters": {
+                                            "Text": "Vehicles"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "c7506ab3-6245-5f27-a913-72c6c231e4b9",
+                                        "type": "/#Components/MenuItem",
+                                        "label": "Species",
+                                        "parameters": {
+                                            "Text": "Species"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "40af3294-55ed-ae30-bbe5-9facf84f9b79",
+                        "type": "PageStackNavigate",
+                        "x": 288.66666666666674,
+                        "y": 83.33333333333337,
+                        "parameters": {
+                            "target": "8hda",
+                            "tr-darkoverlay": false,
+                            "tr-crossfade": true
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "transition",
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        "None",
+                                        "Push",
+                                        "Popup"
+                                    ]
+                                },
+                                "default": "Push",
+                                "displayName": "Transition",
+                                "group": "Transition",
+                                "index": 4
+                            },
+                            {
+                                "name": "tr-direction",
+                                "displayName": "Direction",
+                                "group": "Transition",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        "Right",
+                                        "Left",
+                                        "Up",
+                                        "Down",
+                                        "In",
+                                        "Out"
+                                    ]
+                                },
+                                "default": "Left",
+                                "plug": "input",
+                                "index": 5
+                            },
+                            {
+                                "name": "tr-shift",
+                                "displayName": "Shift Distance",
+                                "group": "Transition",
+                                "type": {
+                                    "name": "number",
+                                    "units": [
+                                        "%",
+                                        "px"
+                                    ]
+                                },
+                                "default": {
+                                    "value": 25,
+                                    "unit": "%"
+                                },
+                                "plug": "input",
+                                "index": 6
+                            },
+                            {
+                                "name": "tr-crossfade",
+                                "displayName": "Crossfade",
+                                "group": "Transition",
+                                "type": "boolean",
+                                "default": false,
+                                "plug": "input",
+                                "index": 7
+                            },
+                            {
+                                "name": "tr-darkoverlay",
+                                "displayName": "Dark Overlay",
+                                "group": "Transition",
+                                "type": "boolean",
+                                "default": true,
+                                "plug": "input",
+                                "index": 8
+                            },
+                            {
+                                "name": "tr-darkoverlayamount",
+                                "displayName": "Dark Overlay Amount",
+                                "group": "Transition",
+                                "type": "number",
+                                "default": 0.5,
+                                "plug": "input",
+                                "index": 9
+                            },
+                            {
+                                "name": "tr-timing",
+                                "displayName": "Timing",
+                                "group": "Transition",
+                                "type": "curve",
+                                "plug": "input",
+                                "index": 10
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        {
+                                            "label": "Films",
+                                            "value": "8hda"
+                                        },
+                                        {
+                                            "label": "Film",
+                                            "value": "tstt"
+                                        },
+                                        {
+                                            "label": "Home",
+                                            "value": "q3ku"
+                                        },
+                                        {
+                                            "label": "Planets",
+                                            "value": "zskx"
+                                        },
+                                        {
+                                            "label": "Planet",
+                                            "value": "iugk"
+                                        },
+                                        {
+                                            "label": "Characters",
+                                            "value": "u7bz"
+                                        },
+                                        {
+                                            "label": "Character",
+                                            "value": "ois4"
+                                        }
+                                    ],
+                                    "allowEditOnly": true
+                                },
+                                "group": "General",
+                                "displayName": "Target Page",
+                                "name": "target",
+                                "default": "8hda",
+                                "index": 11
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "9ad7ed9c-e6f5-5985-9d97-8df1e2bbc7be",
+                        "type": "PageStackNavigate",
+                        "x": 289.66666666666674,
+                        "y": 189.33333333333337,
+                        "parameters": {
+                            "target": "zskx",
+                            "tr-darkoverlay": false,
+                            "tr-crossfade": true
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "transition",
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        "None",
+                                        "Push",
+                                        "Popup"
+                                    ]
+                                },
+                                "default": "Push",
+                                "displayName": "Transition",
+                                "group": "Transition",
+                                "index": 4
+                            },
+                            {
+                                "name": "tr-direction",
+                                "displayName": "Direction",
+                                "group": "Transition",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        "Right",
+                                        "Left",
+                                        "Up",
+                                        "Down",
+                                        "In",
+                                        "Out"
+                                    ]
+                                },
+                                "default": "Left",
+                                "plug": "input",
+                                "index": 5
+                            },
+                            {
+                                "name": "tr-shift",
+                                "displayName": "Shift Distance",
+                                "group": "Transition",
+                                "type": {
+                                    "name": "number",
+                                    "units": [
+                                        "%",
+                                        "px"
+                                    ]
+                                },
+                                "default": {
+                                    "value": 25,
+                                    "unit": "%"
+                                },
+                                "plug": "input",
+                                "index": 6
+                            },
+                            {
+                                "name": "tr-crossfade",
+                                "displayName": "Crossfade",
+                                "group": "Transition",
+                                "type": "boolean",
+                                "default": false,
+                                "plug": "input",
+                                "index": 7
+                            },
+                            {
+                                "name": "tr-darkoverlay",
+                                "displayName": "Dark Overlay",
+                                "group": "Transition",
+                                "type": "boolean",
+                                "default": true,
+                                "plug": "input",
+                                "index": 8
+                            },
+                            {
+                                "name": "tr-darkoverlayamount",
+                                "displayName": "Dark Overlay Amount",
+                                "group": "Transition",
+                                "type": "number",
+                                "default": 0.5,
+                                "plug": "input",
+                                "index": 9
+                            },
+                            {
+                                "name": "tr-timing",
+                                "displayName": "Timing",
+                                "group": "Transition",
+                                "type": "curve",
+                                "plug": "input",
+                                "index": 10
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        {
+                                            "label": "Films",
+                                            "value": "8hda"
+                                        },
+                                        {
+                                            "label": "Film",
+                                            "value": "tstt"
+                                        },
+                                        {
+                                            "label": "Home",
+                                            "value": "q3ku"
+                                        },
+                                        {
+                                            "label": "Planets",
+                                            "value": "zskx"
+                                        },
+                                        {
+                                            "label": "Planet",
+                                            "value": "iugk"
+                                        },
+                                        {
+                                            "label": "Characters",
+                                            "value": "u7bz"
+                                        },
+                                        {
+                                            "label": "Character",
+                                            "value": "ois4"
+                                        }
+                                    ],
+                                    "allowEditOnly": true
+                                },
+                                "group": "General",
+                                "displayName": "Target Page",
+                                "name": "target",
+                                "default": "8hda",
+                                "index": 11
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "919d6c21-27e7-e23f-3b73-5ddba6bb659b",
+                        "type": "PageStackNavigate",
+                        "x": 290.66666666666674,
+                        "y": 283.33333333333337,
+                        "parameters": {
+                            "target": "u7bz",
+                            "tr-darkoverlay": false,
+                            "tr-crossfade": true
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "transition",
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        "None",
+                                        "Push",
+                                        "Popup"
+                                    ]
+                                },
+                                "default": "Push",
+                                "displayName": "Transition",
+                                "group": "Transition",
+                                "index": 4
+                            },
+                            {
+                                "name": "tr-direction",
+                                "displayName": "Direction",
+                                "group": "Transition",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        "Right",
+                                        "Left",
+                                        "Up",
+                                        "Down",
+                                        "In",
+                                        "Out"
+                                    ]
+                                },
+                                "default": "Left",
+                                "plug": "input",
+                                "index": 5
+                            },
+                            {
+                                "name": "tr-shift",
+                                "displayName": "Shift Distance",
+                                "group": "Transition",
+                                "type": {
+                                    "name": "number",
+                                    "units": [
+                                        "%",
+                                        "px"
+                                    ]
+                                },
+                                "default": {
+                                    "value": 25,
+                                    "unit": "%"
+                                },
+                                "plug": "input",
+                                "index": 6
+                            },
+                            {
+                                "name": "tr-crossfade",
+                                "displayName": "Crossfade",
+                                "group": "Transition",
+                                "type": "boolean",
+                                "default": false,
+                                "plug": "input",
+                                "index": 7
+                            },
+                            {
+                                "name": "tr-darkoverlay",
+                                "displayName": "Dark Overlay",
+                                "group": "Transition",
+                                "type": "boolean",
+                                "default": true,
+                                "plug": "input",
+                                "index": 8
+                            },
+                            {
+                                "name": "tr-darkoverlayamount",
+                                "displayName": "Dark Overlay Amount",
+                                "group": "Transition",
+                                "type": "number",
+                                "default": 0.5,
+                                "plug": "input",
+                                "index": 9
+                            },
+                            {
+                                "name": "tr-timing",
+                                "displayName": "Timing",
+                                "group": "Transition",
+                                "type": "curve",
+                                "plug": "input",
+                                "index": 10
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        {
+                                            "label": "Films",
+                                            "value": "8hda"
+                                        },
+                                        {
+                                            "label": "Film",
+                                            "value": "tstt"
+                                        },
+                                        {
+                                            "label": "Home",
+                                            "value": "q3ku"
+                                        },
+                                        {
+                                            "label": "Planets",
+                                            "value": "zskx"
+                                        },
+                                        {
+                                            "label": "Planet",
+                                            "value": "iugk"
+                                        },
+                                        {
+                                            "label": "Characters",
+                                            "value": "u7bz"
+                                        },
+                                        {
+                                            "label": "Character",
+                                            "value": "ois4"
+                                        }
+                                    ],
+                                    "allowEditOnly": true
+                                },
+                                "group": "General",
+                                "displayName": "Target Page",
+                                "name": "target",
+                                "default": "8hda",
+                                "index": 11
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            },
+            "metadata": {
+                "canvasPos": {
+                    "x": 343.4243031966603,
+                    "y": -19.462608002553182
+                },
+                "canvasSize": {
+                    "width": "619px",
+                    "height": "799px"
+                }
+            }
+        },
+        {
+            "name": "/Planets/_id/Index",
+            "id": "1fbd4969-d007-02e8-8303-64e59683d80e",
+            "graph": {
+                "connections": [],
+                "roots": [
+                    {
+                        "id": "b243a5f6-66d6-f536-577b-ba46165ad4da",
+                        "type": "Group",
+                        "x": 0,
+                        "y": 0,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    }
+                ]
+            },
+            "metadata": {
+                "canvasPos": {
+                    "x": 5955.8951234805545,
+                    "y": -67.71738282709552
+                },
+                "canvasSize": {
+                    "width": "516px",
+                    "height": "909px"
+                }
+            }
+        },
+        {
+            "name": "/Planets/Index",
+            "id": "7d59b41d-f3bb-eccb-5be7-d1f84b11702c",
+            "graph": {
+                "connections": [],
+                "roots": [
+                    {
+                        "id": "e3fd17a3-9d18-1a11-12f6-ffadf053a0e2",
+                        "type": "Group",
+                        "x": 0,
+                        "y": 0,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "78b3ff12-8b97-fb27-3595-66a7ee48d5b1",
+                                "type": "Text",
+                                "parameters": {
+                                    "text": "Planets"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            "metadata": {
+                "canvasPos": {
+                    "x": 5152.913319629951,
+                    "y": -48.69834383224821
+                },
+                "canvasSize": {
+                    "width": "592px",
+                    "height": "861px"
                 }
             }
         }

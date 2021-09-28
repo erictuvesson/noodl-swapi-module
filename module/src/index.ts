@@ -21,6 +21,10 @@ import {
 
 import * as Noodl from '@noodl/noodl-sdk';
 
+import {
+  autoLayoutComponentNode
+} from './components';
+
 const debugLog = Noodl.defineNode({
   category: 'Debug',
   name: 'Log',
@@ -943,7 +947,13 @@ const getPlanet = Noodl.defineNode({
   }
 });
 
+
+
+
 Noodl.defineModule({
+  reactNodes: [
+    autoLayoutComponentNode,
+  ],
   nodes: [
     debugLog,
     getFilms,

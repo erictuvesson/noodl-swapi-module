@@ -232,9 +232,25 @@ declare module '@noodl/noodl-sdk' {
 */
   };
 
+  export type ReactNode = {
+    name: string;
+    color?: keyof Colors;
+    category?: string;
+
+    getReactComponent: () => any;
+    inputProps?: any;
+    inputCss?: any;
+    outputProps?: any;
+    setup?: any;
+    frame?: any;
+  };
+
   export function defineNode(def: Node): NodeDefInstance;
 
+  export function defineReactNode(def: ReactNode): any;
+
   export function defineModule(def: {
+    reactNodes: any[];
     nodes: NodeDefInstance[];
 
     /**

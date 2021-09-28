@@ -17,7 +17,7 @@ module.exports = {
   },
   externals: {},
   resolve: {
-    extensions: [".ts", ".js", ".json", ".css"]
+    extensions: [".ts", ".tsx", ".js", ".json", ".css"]
   },
   plugins: [
     new CopyWebpackPlugin({
@@ -43,7 +43,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts?$/,
+        test: /\.(ts|tsx)$/,
         use: 'ts-loader',
         exclude: /node_modules/,
       },
