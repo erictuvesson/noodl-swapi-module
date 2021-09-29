@@ -3953,7 +3953,6 @@ function autoLayoutComponent(props) {
 const autoLayoutComponentNode = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_1__.defineReactNode({
     name: 'Auto Layout',
     category: 'Visual',
-    color: 'default',
     getReactComponent() {
         return autoLayoutComponent;
     },

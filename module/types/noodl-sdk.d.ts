@@ -73,6 +73,8 @@ declare module '@noodl/noodl-sdk' {
     | 'signal'
     | { name: Type, codeeditor: TypeEditor };
 
+
+
   export type NodeInput = Type | {
     type: Type;
     displayName?: string;
@@ -114,7 +116,11 @@ declare module '@noodl/noodl-sdk' {
     category?: string;
 
     getInspectInfo?: any;
-    docs?: any;
+    
+    /**
+     * URL to the docs page.
+     */
+    docs?: string;
 
     initialize?: () => void;
 
@@ -146,7 +152,7 @@ declare module '@noodl/noodl-sdk' {
     setup?: () => void;
   };
 
-  export type NodeDefInstance = {
+  export type NodeDefinitionInstance = {
     node: Node;
     
     /**
@@ -221,37 +227,76 @@ declare module '@noodl/noodl-sdk' {
     flagDirty(): void;
     flagOutputDirty(name: string): void;
     sendSignalOnOutput(name: string): void;
+  };
 
-/*
-    _registerSelectors(t: any): void;
-    _isUnregisteredNumberedInput(t: any): void;
-    _registerNumberedInputInstance(t: any): void;
-    _updateDependencies(): void;
-    _onNodeDeleted(): void;
-    _onNodeModelParameterUpdated(t: any): void;
-*/
+
+
+  export type ReactNodeInput = {
+    index?: number;
+    displayName?: string;
+    group?: string;
+    default?: any;
+    type: Type | { // TODO: this is probably the same for everything? Just have extra props?
+      name: string;
+      units?: string[];
+      defaultUnit?: string;
+    };
+  };
+
+  export type ReactNodeOutput = {
+    type: Type;
+    displayName?: string;
+    group?: string;
+  };
+
+  export type ReactNodeInputCss = {
+    index?: number;
+    group?: string;
+    displayName?: string;
+    type: Type;
+    default?: any;
   };
 
   export type ReactNode = {
     name: string;
-    color?: keyof Colors;
     category?: string;
 
+    /**
+     * URL to the docs page.
+     */
+    docs?: string;
+
     getReactComponent: () => any;
-    inputProps?: any;
+    
+    inputProps?: {
+      [key: string]: ReactNodeInput
+    };
+
+    outputProps?: {
+      [key: string]: ReactNodeOutput
+    };
+
     inputCss?: any;
-    outputProps?: any;
     setup?: any;
-    frame?: any;
+
+    frame?: {
+      margins?: boolean;
+      position?: boolean;
+      align?: boolean;
+    };
   };
 
-  export function defineNode(def: Node): NodeDefInstance;
+  export type ReactNodeDefinition = {
 
-  export function defineReactNode(def: ReactNode): any;
+  };
 
+
+
+  export function defineNode(def: Node): NodeDefinitionInstance;
+  export function defineReactNode(def: ReactNode): ReactNodeDefinition;
   export function defineModule(def: {
-    reactNodes: any[];
-    nodes: NodeDefInstance[];
+    reactNodes: ReactNodeDefinition[];
+    nodes: NodeDefinitionInstance[];
 
     /**
      * This is called once on startup

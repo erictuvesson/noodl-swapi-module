@@ -26,7 +26,6 @@ function autoLayoutComponent(props: any): any {
 export const autoLayoutComponentNode = Noodl.defineReactNode({
   name: 'Auto Layout',
   category: 'Visual',
-  color: 'default',
   getReactComponent() {
     return autoLayoutComponent;
   },
