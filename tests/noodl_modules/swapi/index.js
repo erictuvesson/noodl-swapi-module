@@ -3928,6 +3928,23 @@ if (false) {} else {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "autoLayoutComponentNode": () => (/* reexport safe */ _components_auto_layout_component__WEBPACK_IMPORTED_MODULE_0__.autoLayoutComponentNode)
+/* harmony export */ });
+/* harmony import */ var _components_auto_layout_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/auto-layout-component */ "./src/components/auto-layout-component.tsx");
+
+
+
+/***/ }),
+
+/***/ "./src/components/auto-layout-component.tsx":
+/*!**************************************************!*\
+  !*** ./src/components/auto-layout-component.tsx ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "autoLayoutComponentNode": () => (/* binding */ autoLayoutComponentNode)
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
@@ -3942,44 +3959,71 @@ function autoLayoutComponent(props) {
         gap: props.gap,
         width: '100%'
     };
-    if (props.columns) {
-        style.gridTemplateColumns = `repeat(${props.columns}, minmax(0, 1fr))`;
+    const wrapAfter = !Number.isNaN(Number(props.wrapAfter)) ? props.wrapAfter : 'auto-fit';
+    if (props.direction === 'horizontal') {
+        style.gridTemplateColumns = `repeat(${wrapAfter}, minmax(0, 1fr))`;
     }
-    if (props.rows) {
-        style.gridTemplateRows = `repeat(${props.rows}, minmax(0, 1fr))`;
+    else {
+        style.gridTemplateRows = `repeat(${wrapAfter}, minmax(0, 1fr))`;
     }
     return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", Object.assign({ style: style, onClick: props.onClick }, { children: props.children }), void 0);
 }
+/**
+ * This is inspired by Figma Auto Layout
+ */
 const autoLayoutComponentNode = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_1__.defineReactNode({
     name: 'Auto Layout',
-    category: 'Visual',
+    category: 'Extra Visual',
     getReactComponent() {
         return autoLayoutComponent;
     },
     inputProps: {
-        columns: {
-            type: {
-                name: 'number',
-            },
-            default: undefined
-        },
-        rows: {
-            type: {
-                name: 'number',
-            },
-            default: undefined
-        },
         padding: {
+            group: 'Auto Layout',
+            displayName: 'Padding',
             type: {
                 name: 'number',
                 units: ['px'],
                 defaultUnit: 'px'
             },
-            default: 0
+            default: 0,
+        },
+        direction: {
+            group: 'Auto Layout',
+            displayName: 'Direction',
+            default: 'vertical',
+            type: {
+                name: 'enum',
+                enums: [
+                    {
+                        label: 'Vertical',
+                        value: 'vertical'
+                    },
+                    {
+                        label: 'Horizontal',
+                        value: 'horizontal'
+                    }
+                ]
+            },
+            transformTo: (value) => {
+                return value;
+            }
+        },
+        wrapAfter: {
+            group: 'Auto Layout Advanced',
+            displayName: 'Wrap children every',
+            type: {
+                name: 'number',
+            },
+            default: undefined,
+            transformTo: (value) => {
+                // clamp the value to minimum 0
+                return Math.max(Number(value), 0).toString();
+            }
         },
         gap: {
-            name: 'Spacing between items',
             group: 'Auto Layout',
+            displayName: 'Spacing between items',
             type: {
                 name: 'number',
                 units: ['px'],
@@ -3987,9 +4031,6 @@ const autoLayoutComponentNode = _noodl_noodl_sdk__WEBPACK_IMPORTED_MODULE_1__.de
             },
             default: 0
         }
-    },
-    outputProps: {
-        onClick: { type: 'signal', displayName: 'Click' }
     }
 });
 

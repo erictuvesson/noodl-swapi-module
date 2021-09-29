@@ -2460,12 +2460,12 @@
                                         "value": 10,
                                         "unit": "px"
                                     },
-                                    "mounted": true,
                                     "padding": {
                                         "value": 10,
                                         "unit": "px"
                                     },
-                                    "columns": 2
+                                    "direction": "horizontal",
+                                    "wrapAfter": 2
                                 },
                                 "ports": [],
                                 "dynamicports": [],

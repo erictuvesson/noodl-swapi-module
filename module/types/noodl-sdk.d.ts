@@ -71,6 +71,7 @@ declare module '@noodl/noodl-sdk' {
     | 'number'
     | 'boolean'
     | 'signal'
+    | 'enum'
     | { name: Type, codeeditor: TypeEditor };
 
 
@@ -231,6 +232,7 @@ declare module '@noodl/noodl-sdk' {
 
 
 
+  // https://github.com/noodlapp/noodl-chartjs-module/blob/cbd69e526a8e68804f738c1deeb679b22d7df3ac/module/src/chart.js#L68-L72
   export type ReactNodeInput = {
     index?: number;
     displayName?: string;
@@ -240,7 +242,12 @@ declare module '@noodl/noodl-sdk' {
       name: string;
       units?: string[];
       defaultUnit?: string;
+      enums?: {
+        label: string;
+        value: string;
+      }[];
     };
+    transformTo?: (value: any) => any;
   };
 
   export type ReactNodeOutput = {
